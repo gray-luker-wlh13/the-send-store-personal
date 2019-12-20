@@ -1,0 +1,44 @@
+@mixin flexDisplay(){
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#search-button {
+    font-weight: bold;
+    font-size: 30px;
+    color: white;
+    border: none;
+    background-color: transparent;
+    // @search-button:hover{
+
+    // }
+}
+
+.header {
+    @include flexDisplay();
+    height: 100px;
+    width: 100vw;
+    background-color: black;
+}
+
+.left-links {
+    @include flexDisplay();
+
+    height: 100%;
+    width: 100%;
+}
+
+.right-links {
+    @include flexDisplay();
+
+    height: 100%;
+    width: 100%;
+}
+
+.header-link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+}

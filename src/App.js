@@ -1,12 +1,28 @@
 import React from 'react';
 import './App.scss';
+import {withRouter} from 'react-router-dom';
+import routes from './routes';
+import Header from './Components/Header/Header';
 
-function App() {
+function App(props) {
+  console.log(props.location.pathname);
   return (
     <div className="App">
-      The Send Store!!!!
+      {/* {props.location.pathname === '/'
+      ? (
+        <>
+          {routes}
+        </>
+      ) : (
+        <>
+          <Header />
+          {routes}
+        </>
+      )} */}
+      <Header/>
+      {routes}
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
