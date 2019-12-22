@@ -8,7 +8,7 @@ function App(props) {
   console.log(props.location.pathname);
   return (
     <div className="App">
-      {/* {props.location.pathname === '/'
+      {props.location.pathname === '/'
       ? (
         <>
           {routes}
@@ -18,9 +18,9 @@ function App(props) {
           <Header />
           {routes}
         </>
-      )} */}
-      <Header/>
-      {routes}
+      )}
+      {/* <Header/>
+      {routes} */}
     </div>
   );
 }

@@ -4,6 +4,12 @@
     align-items: center;
 }
 
+@mixin size(){
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+}
+
 
 .header {
     @include flexDisplay();
@@ -26,16 +32,12 @@
 }
 .left-links {
     @include flexDisplay();
-
-    height: 100%;
-    width: 100%;
+    @include size();
 }
 
 .right-links {
     @include flexDisplay();
-
-    height: 100%;
-    width: 100%;
+    @include size();
 }
 
 .header-link {
@@ -51,7 +53,7 @@
     font-family: 'Dancing Script', cursive;
     font-weight: bold;
     color: white;
-    font-size: 30px;
+    font-size: 25px;
     border: 1px white solid;
-   
+    border-radius: 5px;
 }
