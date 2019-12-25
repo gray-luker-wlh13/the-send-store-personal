@@ -1,0 +1,65 @@
+// .auth
+// .auth-container
+@mixin flexDisplay($direction){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+.auth {
+    @include flexDisplay(row);
+
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(37, 37, 37);
+}
+
+img {
+    height: 225px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.auth-container {
+    @include flexDisplay(column);
+
+    height: 400px;
+    width: 400px;
+    border: 1px white solid;
+    border-radius: 15px;
+}
+
+.input-container {
+    margin: 10px 0px;
+
+    input {
+        padding: 5px 10px;
+        border-radius: 5px;
+        border-style: none;
+    }
+}
+
+label {
+    color: white;
+    margin-right: 10px;
+    // font-weight: bold;
+    font-size: 20px;
+}
+
+.buttons {
+    height: 20px;
+    display: flex;
+    justify-content: space-around;
+
+    button {
+        border: none;
+        background-color: transparent;
+        color: white;
+        // font-weight: bold;
+        font-size: 20px;
+        text-decoration: underline;
+
+    }
+}
+
