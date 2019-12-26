@@ -8,6 +8,7 @@ const Auth = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+
     let login = () => {
         axios.post('/api/auth/login', {username: username, password: password}).then(res => {
             //props.getUser(res.data)
