@@ -1,11 +1,3 @@
-img {
-  height: 200px;
-  width: 200px;
-  border: 1px rgba(105, 105, 105, 0.747) solid;
-  border-radius: 10px;
-  margin: 20px;
-}
-
 h3 {
   margin: 5px 0px;
 }
@@ -41,6 +33,14 @@ h4 {
   border-radius: 10px;
   margin: 20px 5px;
   background-color: white;
+}
+
+.products img {
+  height: 200px;
+  width: 200px;
+  border: 1px rgba(105, 105, 105, 0.747) solid;
+  border-radius: 10px;
+  margin: 20px;
 }
 
 .product-info {

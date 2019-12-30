@@ -3,7 +3,7 @@ import './Scss/auth.scss';
 import {connect} from 'react-redux';
 import {getConsumer} from '../../redux/reducers/getConsumerReducer';
 import {useState} from 'react';
-import logo from '../../LogoMakr-9WvHiZ-300dpi.png';
+import logo from '../../img/LogoMakr-9WvHiZ-300dpi.png';
 import axios from 'axios';
 
 const Auth = (props) => {

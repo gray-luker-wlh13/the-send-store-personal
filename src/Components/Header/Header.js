@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './Scss/header.scss';
+import headerLogo from '../../img/headerLogo.png';
 
 const Header = () => {
     return (
@@ -10,9 +11,7 @@ const Header = () => {
                 <button id='search-button'>Search</button>
             </div>
             <div id='header-logo'>
-                The
-                Send
-                Store
+                <img src={headerLogo} alt='meh'/>
             </div>
             <div className='right-links'>
             <Link to='/cart' className='header-link'>Cart</Link>
