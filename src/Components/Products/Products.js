@@ -1,9 +1,22 @@
 import React from 'react';
+import {useEffect} from 'react';
 import './Scss/products.scss';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import {getProducts} from '../../redux/reducers/getProductsReducer';
+
 
 const Products = (props) => {
+    useEffect(() => {
+        getProducts();
+    }, [])
+
+    let getProducts = () => {
+        axios.get('/api/products').then(res => {
+            props.getProducts(res.data)
+        })
+    }
+
     let addToCart = (id, price) => {
         if(props.consumer.username){
             axios.post('/api/cart', {
@@ -15,8 +28,9 @@ const Products = (props) => {
             })
         }
     }
-
-    let allProducts = props.products.map((e, i) => {
+    
+    const {products} = props.products;
+    let allProducts = products.map((e, i) => {
         return (
             <div className='products' key={i}>
                 <img src={e.product_img} alt='product-img'/>
@@ -49,7 +63,10 @@ const Products = (props) => {
 }
 
 const mapStateToProps = (reduxState) => {
-    return reduxState;
+    return {
+        products: reduxState.products,
+        consumer: reduxState.consumer
+    };
 }
 
-export default connect(mapStateToProps)(Products);
+export default connect(mapStateToProps, {getProducts})(Products);
