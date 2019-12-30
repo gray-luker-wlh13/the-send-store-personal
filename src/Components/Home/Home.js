@@ -9,8 +9,8 @@ const Home = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        getProducts()
-    })
+        getProducts();
+    }, [])
 
     let getProducts = () => {
         axios.get('/api/products').then(res => {
@@ -18,9 +18,12 @@ const Home = () => {
         })
     }
 
+
     return(
         <div className='home'>
-            <Products products={products}/>
+            <Products 
+                products={products}
+            />
         </div>
     )
 }

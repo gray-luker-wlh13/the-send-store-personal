@@ -28,6 +28,10 @@ app.post('/api/auth/logout', authCtrl.logout);
 
 //home endpoints
 app.get('/api/products', homeCtrl.getProducts);
+app.post('/api/cart', homeCtrl.addToCart);
+
+//cart endpoints
+
 
 const port = SERVER_PORT;
 app.listen(port, () => console.log(`Sending on port ${port}`));

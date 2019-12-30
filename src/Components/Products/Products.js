@@ -1,7 +1,21 @@
 import React from 'react';
 import './Scss/products.scss';
+import axios from 'axios';
+import {connect} from 'react-redux';
 
 const Products = (props) => {
+    let addToCart = (id, price) => {
+        if(props.consumer.username){
+            axios.post('/api/cart', {
+                consumer_order_id: props.consumer.consumer_order_id,
+                product_id: id,
+                price
+            }).then(res => {
+                console.log(res)
+            })
+        }
+    }
+
     let allProducts = props.products.map((e, i) => {
         return (
             <div className='products' key={i}>
@@ -18,7 +32,10 @@ const Products = (props) => {
                     </div>
                 </div>
                 <div id='add-button-container'>
-                    <button id='add-to-cart'>Add To Cart</button>
+                    <button id='add-to-cart'
+                    onClick={() => addToCart(e.product_id, e.price)}>
+                        Add To Cart
+                    </button>
                 </div>
             </div>
         )
@@ -31,4 +48,8 @@ const Products = (props) => {
     )
 }
 
-export default Products;
+const mapStateToProps = (reduxState) => {
+    return reduxState;
+}
+
+export default connect(mapStateToProps)(Products);
