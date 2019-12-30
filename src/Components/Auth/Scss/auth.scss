@@ -15,17 +15,53 @@
     background-color: rgb(37, 37, 37);
 }
 
+.login {
+    @include flexDisplay(column);
+
+    height: auto;
+    width: 100vw;
+    background-color: rgb(37, 37, 37);
+}
+
+.register {
+    @include flexDisplay(column);
+
+    height: auto;
+    width: 100vw;
+    background-color: rgb(37, 37, 37);
+}
+
+
 img {
     height: 225px;
     margin-top: 0;
     margin-bottom: 20px;
 }
 
-.auth-container {
+#profile-display {
+    @include flexDisplay(column);
+
+    height: 200px;
+    width: 200px;
+    margin: 15px 0px;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.login-container {
     @include flexDisplay(column);
 
     height: 400px;
     width: 400px;
+    border: 1px white solid;
+    border-radius: 15px;
+}
+
+.register-container {
+    @include flexDisplay(column);
+
+    height: 550px;
+    width: 500px;
     border: 1px white solid;
     border-radius: 15px;
 }
@@ -46,10 +82,26 @@ label {
     font-size: 20px;
 }
 
+p {
+    color: white;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
 .buttons {
-    height: 20px;
-    display: flex;
-    justify-content: space-around;
+    @include flexDisplay(column);
+
+    height: 100px;
+    // justify-content: space-around;
+    // margin: 20px 0px;
+
+    #main-button {
+        @include flexDisplay(column);
+    }
+
+    #other-button {
+        @include flexDisplay(row);
+    }
 
     button {
         border: none;
@@ -60,3 +112,19 @@ label {
     }
 }
 
+.register-buttons {
+    @include flexDisplay(row);
+    align-items: flex-end;
+
+    height: 40px;
+    justify-content: space-around;
+    margin-bottom: 10px;
+
+    button {
+        border: none;
+        background-color: transparent;
+        color: white;
+        font-size: 20px;
+        text-decoration: underline;
+    }
+}

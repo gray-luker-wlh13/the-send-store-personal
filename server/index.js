@@ -22,7 +22,8 @@ massive(CONNECTION_STRING).then(db => {
 
 //auth endpoints
 app.post('/api/auth/login', authCtrl.login);
-app.post('/api/auth/logout', authCtrl.logout)
+app.post('/api/auth/register', authCtrl.register);
+app.post('/api/auth/logout', authCtrl.logout);
 
 
 const port = SERVER_PORT || 6783;
