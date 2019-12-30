@@ -4,6 +4,7 @@ const express = require('express'),
       {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env,
       session = require('express-session'),
       authCtrl = require('./controllers/authController'),
+      homeCtrl = require('./controllers/homeController'),
       app = express();
 
 app.use(express.json());
@@ -25,6 +26,8 @@ app.post('/api/auth/login', authCtrl.login);
 app.post('/api/auth/register', authCtrl.register);
 app.post('/api/auth/logout', authCtrl.logout);
 
+//home endpoints
+app.get('/api/products', homeCtrl.getProducts);
 
 const port = SERVER_PORT;
 app.listen(port, () => console.log(`Sending on port ${port}`));

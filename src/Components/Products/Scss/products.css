@@ -1,0 +1,111 @@
+img {
+  height: 200px;
+  width: 200px;
+  border: 1px rgba(105, 105, 105, 0.747) solid;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+h3 {
+  margin: 5px 0px;
+}
+
+h4 {
+  margin: 5px 0px;
+}
+
+.products-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 20px 0px;
+  height: auto;
+  width: 100vw;
+}
+
+.products {
+  height: 530px;
+  width: 300px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 20px 5px;
+  background-color: white;
+}
+
+.product-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 220px;
+  width: 280px;
+  margin: 20px 20px 0px 20px;
+}
+
+.product-labels {
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#product-description {
+  height: 100px;
+  border: 1px rgba(105, 105, 105, 0.747) solid;
+  margin: 5px 10px 0px 0px;
+  overflow: scroll;
+}
+
+#product-condition {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#add-button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 40px;
+  width: 300px;
+}
+
+#add-button-container #add-to-cart {
+  height: 30px;
+  width: 90px;
+  border: 1px rgba(105, 105, 105, 0.747) solid;
+  border-radius: 5px;
+  font-weight: bold;
+  -webkit-box-shadow: 2px 3px #505050;
+          box-shadow: 2px 3px #505050;
+}
+/*# sourceMappingURL=products.css.map */

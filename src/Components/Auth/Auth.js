@@ -63,7 +63,7 @@ const Auth = (props) => {
                             </div>
                             <br/>
                             <div id='other-button'>
-                                <p>or register as a user here:</p>
+                                <p className='auth-p'>or register as a user here:</p>
                                 <button onClick={() => setClick(!clicked)}>Register</button>
                             </div>
                         </div>
@@ -118,7 +118,7 @@ const Auth = (props) => {
                             </div>
                             <br/>
                             <div id='other-register-button'>
-                                <p>or register as a user here:</p>
+                                <p className='auth-p'>or register as a user here:</p>
                                 <button onClick={() => setClick(!clicked)}>Login</button>
                             </div>
                         </div>
