@@ -92,8 +92,6 @@ p {
     @include flexDisplay(column);
 
     height: 100px;
-    // justify-content: space-around;
-    // margin: 20px 0px;
 
     #main-button {
         @include flexDisplay(column);
@@ -113,12 +111,17 @@ p {
 }
 
 .register-buttons {
-    @include flexDisplay(row);
-    align-items: flex-end;
+    @include flexDisplay(column);
 
-    height: 40px;
-    justify-content: space-around;
-    margin-bottom: 10px;
+    height: 100px;
+
+    #main-register-button {
+        @include flexDisplay(column);
+    }
+
+    #other-register-button {
+        @include flexDisplay(row);
+    }
 
     button {
         border: none;

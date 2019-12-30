@@ -113,10 +113,14 @@ const Auth = (props) => {
                             />
                        </div>
                        <div className='register-buttons'>
-                            <button onClick={register}>Register</button>
+                       <div id='main-register-button'>
+                                <button onClick={register}>Register</button>
+                            </div>
                             <br/>
-                            <label>or go back to:</label>
-                            <button onClick={() => setClick(!clicked)}>Login</button>
+                            <div id='other-register-button'>
+                                <p>or register as a user here:</p>
+                                <button onClick={() => setClick(!clicked)}>Login</button>
+                            </div>
                         </div>
                     </div>
                 </div>

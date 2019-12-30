@@ -26,5 +26,5 @@ app.post('/api/auth/register', authCtrl.register);
 app.post('/api/auth/logout', authCtrl.logout);
 
 
-const port = SERVER_PORT || 6783;
-app.listen(() => console.log(`Sending on port ${port}`));
+const port = SERVER_PORT;
+app.listen(port, () => console.log(`Sending on port ${port}`));

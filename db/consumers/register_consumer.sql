@@ -1,4 +1,4 @@
-INSERT INTO consumers (
+INSERT INTO consumer (
     profile_img,
     username,
     password,
@@ -6,7 +6,7 @@ INSERT INTO consumers (
 ) VALUES (
     ${profile_img},
     ${username},
-    ${password},
+    ${hash},
     ${favorite_climb}
 )
 RETURNING consumer_id, profile_img, username, favorite_climb;
