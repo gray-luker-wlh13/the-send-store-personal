@@ -1,10 +1,12 @@
 import React from 'react';
 import './Scss/auth.scss';
+import {connect} from 'react-redux';
+import {getConsumer} from '../../redux/reducers/getConsumerReducer';
 import {useState} from 'react';
 import logo from '../../LogoMakr-9WvHiZ-300dpi.png';
 import axios from 'axios';
 
-const Auth = () => {
+const Auth = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [profile_img, setProfileImg] = useState('');
@@ -14,8 +16,8 @@ const Auth = () => {
 
     let login = () => {
         axios.post('/api/auth/login', {username: username, password: password}).then(res => {
-            //props.getUser(res.data)
-            //props.history.push('/home')
+            props.getConsumer(res.data)
+            props.history.push('/home')
         })
     }
 
@@ -26,8 +28,8 @@ const Auth = () => {
             password: password,
             favorite_climb: favorite_climb
         }).then(res => {
-            //props.getUser(res.data)
-            //props.history.push('/home')
+            props.getConsumer(res.data)
+            props.history.push('/home')
         })
     }
 
@@ -123,4 +125,4 @@ const Auth = () => {
     )
 }
 
-export default Auth;
+export default connect(null, {getConsumer})(Auth);
