@@ -9,6 +9,7 @@ import axios from 'axios';
 const Auth = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
     const [profile_img, setProfileImg] = useState('');
     const [favorite_climb, setClimb] = useState('');
     const [clicked, setClick] = useState(false);

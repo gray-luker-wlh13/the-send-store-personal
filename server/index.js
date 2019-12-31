@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express'),
       massive = require('massive'),
+      gradient = require('gradient-string'),
       {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env,
       session = require('express-session'),
       authCtrl = require('./controllers/authController'),
@@ -18,7 +19,7 @@ app.use(session({
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
-    console.log('db connected');
+    console.log(gradient.mind('db connected'));
 });
 
 //auth endpoints
@@ -34,4 +35,4 @@ app.post('/api/cart', homeCtrl.addToCart);
 
 
 const port = SERVER_PORT;
-app.listen(port, () => console.log(`Sending on port ${port}`));
+app.listen(port, () => console.log(gradient.cristal(`Sending on port ${port}`)));
