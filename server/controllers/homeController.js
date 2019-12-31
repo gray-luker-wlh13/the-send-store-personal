@@ -11,8 +11,8 @@ module.exports = {
         const {consumer_order_id, product_id, price} = req.body;
         const db = req.app.get('db');
         db.orders.add_to_cart({consumer_order_id, product_id, price}).then(res => {
-            res.sendStatus(200)
+            res.sendStatus(200);
         })
-        .catch(err => res.status(500).send(err))
+        .catch(err => res.status(501).send(err))
     }
 }

@@ -6,6 +6,7 @@ const express = require('express'),
       session = require('express-session'),
       authCtrl = require('./controllers/authController'),
       homeCtrl = require('./controllers/homeController'),
+      cartCtrl = require('./controllers/cartController'),
       app = express();
 
 app.use(express.json());
@@ -32,7 +33,7 @@ app.get('/api/products', homeCtrl.getProducts);
 app.post('/api/cart', homeCtrl.addToCart);
 
 //cart endpoints
-
+app.get('/api/cart/:id', cartCtrl.getCart);
 
 const port = SERVER_PORT;
 app.listen(port, () => console.log(gradient.cristal(`Sending on port ${port}`)));

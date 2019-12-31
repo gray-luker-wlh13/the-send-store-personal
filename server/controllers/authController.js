@@ -31,12 +31,12 @@ module.exports = {
         let consumer = await db.consumers.check_consumer(username);
         consumer = consumer[0];
         if(!consumer){
-            res.status(400).send('Username not found')
+            return res.status(400).send('Username not found')
         }
         const authenticated = bcrypt.compareSync(password, consumer.password);
         if(authenticated){
             delete consumer.password;
-            session.consumer = authenticated;
+            session.consumer = consumer;
             res.status(200).send(session.consumer);
         }
     },

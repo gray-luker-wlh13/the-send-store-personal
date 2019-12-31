@@ -7,6 +7,8 @@ import {getProducts} from '../../redux/reducers/getProductsReducer';
 
 
 const Products = (props) => {
+    const {username, consumer_order_id} = props.consumer.consumer;
+
     useEffect(() => {
         getProducts();
     }, [])
@@ -17,18 +19,20 @@ const Products = (props) => {
         })
     }
 
-    let addToCart = (id, price) => {
-        if(props.consumer.username){
+    let addToCart = (product_id, price) => {
+        if(username){
             axios.post('/api/cart', {
-                consumer_order_id: props.consumer.consumer_order_id,
-                product_id: id,
+                consumer_order_id: consumer_order_id,
+                product_id,
                 price
             }).then(res => {
                 console.log(res)
             })
         }
+    console.log('hit action');
     }
     
+    console.log(props.products.products)
     const {products} = props.products;
     let allProducts = products.map((e, i) => {
         return (
