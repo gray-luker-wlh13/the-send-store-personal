@@ -26,16 +26,24 @@
     color: white;
     border: none;
     background-color: transparent;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .left-links {
     @include flexDisplay();
     @include size();
+
+    text-decoration: none;
 }
 
 .right-links {
     @include flexDisplay();
     @include size();
+
+    text-decoration: none;
 }
 
 .header-link {
@@ -47,10 +55,9 @@
 
 #header-logo {
     height: 150px;
-    margin-top: -20px;
+    margin-top: 10px;
 
     img{
         border: none;
-        
     }
 }
