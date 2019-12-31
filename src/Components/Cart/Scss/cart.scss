@@ -1,10 +1,9 @@
 //variables
-$borderColor: rgba(105, 105, 105, 0.747);
+@import '../../Variables/variables.scss';
 
 @mixin flexDisplay($direction){
     display: flex;
     justify-content: space-around;
-    align-items: center;
     flex-direction: $direction;
 }
 
@@ -15,14 +14,22 @@ $borderColor: rgba(105, 105, 105, 0.747);
     flex-direction: column;
 }
 
+
 .cart-container {
+    @include flexDisplay(row);
+
+    padding: 30px 0px;
+    height: auto;
+    width: 100vw;
+    background-color: $backgroundColor;
+}
+
+.cart-items {
     @include flexDisplay(row);
     flex-wrap: wrap;
 
-    padding: 20px 0px;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(167, 224, 247, 0.63);
+    height: auto;
+    width: 50vw;
 }
 
 .cart {

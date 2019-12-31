@@ -34,6 +34,7 @@ app.post('/api/cart', homeCtrl.addToCart);
 
 //cart endpoints
 app.get('/api/cart/:id', cartCtrl.getCart);
+app.delete('/api/cart/:id', cartCtrl.removeFromCart);
 
 const port = SERVER_PORT;
 app.listen(port, () => console.log(gradient.cristal(`Sending on port ${port}`)));

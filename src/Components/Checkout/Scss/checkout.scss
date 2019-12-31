@@ -1,0 +1,13 @@
+@import '../../Variables/variables.scss';
+
+.purchase-container {
+    height: 400px;
+    width: 400px;
+    background: white;
+    position: sticky;
+    right: 0px;
+    top: 130px;
+    margin: 90px 0px;
+    border: 1px $borderColor solid;
+    border-radius: 10px;
+}

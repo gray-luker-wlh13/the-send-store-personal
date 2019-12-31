@@ -28,11 +28,10 @@ const Products = (props) => {
             }).then(res => {
                 console.log(res)
             })
-        }
-    console.log('hit action');
-    }
+        }                                 
+    }     
     
-    console.log(props.products.products)
+    // console.log(props.products.products)
     const {products} = props.products;
     let allProducts = products.map((e, i) => {
         return (

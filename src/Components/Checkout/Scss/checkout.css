@@ -1,0 +1,13 @@
+.purchase-container {
+  height: 400px;
+  width: 400px;
+  background: white;
+  position: -webkit-sticky;
+  position: sticky;
+  right: 0px;
+  top: 130px;
+  margin: 90px 0px;
+  border: 1px rgba(105, 105, 105, 0.747) solid;
+  border-radius: 10px;
+}
+/*# sourceMappingURL=checkout.css.map */

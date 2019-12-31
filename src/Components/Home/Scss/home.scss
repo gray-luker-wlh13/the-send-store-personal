@@ -1,4 +1,6 @@
+@import '../../Variables/variables.scss';
+
 .home {
-    background: rgba(167, 224, 247, 0.63);
+    background: $backgroundColor;
     height: 100vh;
 }
