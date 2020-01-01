@@ -62,7 +62,7 @@ const Cart = (props) => {
                 <div className='cart-items'>
                     {mappedCart}
                 </div>
-                <Checkout />
+                <Checkout cart={cart}/>
                 </>
             ): (
                 <div className='empty-cart'>

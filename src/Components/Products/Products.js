@@ -11,7 +11,7 @@ const Products = (props) => {
 
     useEffect(() => {
         getProducts();
-    }, [])
+    }, [props.products.length])
 
     let getProducts = () => {
         axios.get('/api/products').then(res => {
