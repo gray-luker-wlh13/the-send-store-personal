@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAEA,AAAA,KAAK,CAAC;EACF,UAAU,ECFI,yBAAyB;EDGvC,MAAM,EAAE,KAAK;CAChB",
+    "mappings": "AAEA,AAAA,KAAK,CAAC;EACF,UAAU,ECFI,yBAAyB;EDGvC,MAAM,EAAE,IAAI;CACf",
     "sources": [
         "home.scss",
         "../../Variables/variables.scss"

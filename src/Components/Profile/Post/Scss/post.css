@@ -1,0 +1,116 @@
+.post-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 550px;
+}
+
+.post-container .new-product {
+  height: 550px;
+  width: 400px;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0px;
+  top: 220px;
+  border: 1px solid rgba(105, 105, 105, 0.747);
+  background-color: white;
+  border-radius: 15px;
+  margin-right: 20px;
+}
+
+.post-container .new-product img {
+  height: 200px;
+  width: 200px;
+  margin: 15px 0px;
+  border-radius: 100px;
+  overflow: hidden;
+  border: 1px solid rgba(105, 105, 105, 0.747);
+}
+
+.post-container .product-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  flex-direction: row;
+  margin: 10px 10px;
+  width: 350px;
+}
+
+.post-container .product-input label {
+  color: black;
+  font-size: 20px;
+}
+
+.post-container .product-input input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border-style: none;
+  border: 1px solid rgba(105, 105, 105, 0.747);
+  height: 20px;
+  width: 150px;
+}
+
+.post-container .custom-select select {
+  width: 150px;
+  height: 25px;
+}
+
+.post-container .add-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 60px;
+  width: 400px;
+}
+
+.post-container .add-button button {
+  height: 30px;
+  width: 90px;
+  border: 1px rgba(105, 105, 105, 0.747) solid;
+  border-radius: 5px;
+  font-weight: bold;
+  -webkit-box-shadow: 2px 3px #505050;
+          box-shadow: 2px 3px #505050;
+}
+
+.post-container #description {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border-style: none;
+  border: 1px solid rgba(105, 105, 105, 0.747);
+  height: 60px;
+  width: 150px;
+}
+/*# sourceMappingURL=post.css.map */

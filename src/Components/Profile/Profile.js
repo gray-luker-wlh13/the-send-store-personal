@@ -3,9 +3,12 @@ import axios from 'axios';
 import './Scss/profile.scss';
 import {connect} from 'react-redux';
 import {logout} from '../../redux/reducers/getConsumerReducer';
+import Post from './Post/Post';
 
 const Profile = (props) => {
     const [myProducts, setMyProducts] = useState([]);
+    const [editProduct, setEditProduct] = useState(false);
+    const [newProduct, setNewProduct] = useState(false);
 
     useEffect(() => {
         getMyProducts()
@@ -60,7 +63,7 @@ const Profile = (props) => {
     console.log(props);
     return(
         <div className='profile-container'>
-            <div className='profile'>
+            {/* <div className='profile'>
                 <img src={consumer.profile_img} alt='profile-img'/>
                 <h3>{consumer.username}</h3>
                 <div className='favorite-climb'>
@@ -68,9 +71,10 @@ const Profile = (props) => {
                 </div>
                 <div className='buttons-container'>
                     <button onClick={logout}>Log Out</button>
-                    <button>Edit Profile</button>
+                    <button onClick={() => setEditProduct(!editProduct)}>Edit Profile</button>
                 </div>
-            </div>
+            </div> */}
+            <Post getFn={getMyProducts} myProducts={myProducts}/>
             <div className='consumer-products-container'>
                 <h1>My Products:</h1>
                 <div className='consumer-products'>
@@ -83,7 +87,7 @@ const Profile = (props) => {
                             </div>
                         )}
                 </div>
-                <button>Add New Post</button>
+                <button onClick={() => setNewProduct(!newProduct)}>Create New Product</button>
             </div>
         </div>
     )
