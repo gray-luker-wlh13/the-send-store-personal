@@ -74,7 +74,14 @@ const Profile = (props) => {
             <div className='consumer-products-container'>
                 <h1>My Products:</h1>
                 <div className='consumer-products'>
-                    {consumerProducts}
+                    {myProducts[0] ? 
+                        <>
+                            {consumerProducts}
+                        </> : (
+                            <div className='empty-products'>
+                                <h2>You have 0 Products!</h2> 
+                            </div>
+                        )}
                 </div>
                 <button>Add New Post</button>
             </div>

@@ -26,7 +26,9 @@ const Products = (props) => {
                 product_id,
                 price
             }).then(res => {
-                console.log(res)
+                return (
+                    getProducts(res.data)
+                )
             })
         }                                 
     }     

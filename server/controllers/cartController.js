@@ -16,7 +16,7 @@ module.exports = {
         const {id} = req.params;
         const newId = +id;
         const db = req.app.get('db');
-        db.orders.remove_order(newId).then(res => {
+        db.orders.remove_order(newId).then(() => {
             // console.log(typeof newId)
             res.sendStatus(200)
         })

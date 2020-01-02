@@ -165,5 +165,23 @@
         flex-direction: row;
         align-items: center;
     }
+
+    .empty-products {
+        height: 400px;
+        width: 400px;
+        border: 1px $borderColor solid;
+        border-radius: 15px;
+        background: white;
+        display: flex;
+        justify-content: center;
+        margin-top: 90px;
+        position: sticky;
+        top: 220px;
+        
+        h2 {
+            text-align: left;
+            padding: 10px 20px;
+        }
+    }
 }
 

@@ -25,7 +25,9 @@ const Cart = (props) => {
 
     let removeOrder = (id) => {
         axios.delete(`/api/cart/${id}`).then(res => {
-            console.log(res);
+            return (
+                getCart(res.data)
+            )
         })
     }
 
