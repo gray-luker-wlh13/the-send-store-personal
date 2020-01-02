@@ -1,22 +1,9 @@
 //variables
 @import '../../Variables/variables.scss';
-
-@mixin flexDisplay($direction){
-    display: flex;
-    justify-content: space-around;
-    flex-direction: $direction;
-}
-
-@mixin productFlex(){
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-}
-
+@import '../../Mixins/mixins.scss';
 
 .cart-container {
-    @include flexDisplay(row);
+    @include flexDisplayTwo(row);
 
     padding: 30px 0px;
     height: auto;
@@ -25,7 +12,7 @@
 }
 
 .cart-items {
-    @include flexDisplay(row);
+    @include flexDisplayTwo(row);
     flex-wrap: wrap;
 
     height: auto;

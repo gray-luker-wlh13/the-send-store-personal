@@ -37,20 +37,7 @@
 }
 
 .register {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: auto;
+  height: 120vh;
   width: 100vw;
   background-color: #252525;
 }
@@ -130,12 +117,14 @@ img {
   padding: 5px 10px;
   border-radius: 5px;
   border-style: none;
+  height: 25px;
+  width: 150px;
 }
 
 label {
   color: white;
   margin-right: 10px;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .auth-p {
@@ -197,7 +186,7 @@ label {
   border: none;
   background-color: transparent;
   color: white;
-  font-size: 20px;
+  font-size: 22px;
   text-decoration: underline;
 }
 

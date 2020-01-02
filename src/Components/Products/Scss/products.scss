@@ -1,22 +1,9 @@
 //variables
-$borderColor: rgba(105, 105, 105, 0.747);
-
-@mixin flexDisplay($direction){
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: $direction;
-}
-
-@mixin productFlex(){
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-}
+@import '../../Mixins/mixins.scss';
+@import '../../Variables/variables.scss';
 
 .products-container {
-    @include flexDisplay(row);
+    @include flexDisplayTwo(row);
     flex-wrap: wrap;
 
     padding: 20px 0px;

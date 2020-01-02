@@ -1,14 +1,9 @@
 // .auth
 // .auth-container
-@mixin flexDisplay($direction){
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: $direction;
-}
+@import '../../Mixins/mixins.scss';
 
 .auth {
-    @include flexDisplay(row);
+    @include flexDisplayAuth(row);
 
     height: 100vh;
     width: 100vw;
@@ -16,7 +11,7 @@
 }
 
 .login {
-    @include flexDisplay(column);
+    @include flexDisplayAuth(column);
 
     height: auto;
     width: 100vw;
@@ -24,9 +19,7 @@
 }
 
 .register {
-    @include flexDisplay(column);
-
-    height: auto;
+    height: 120vh;
     width: 100vw;
     background-color: rgb(37, 37, 37);
 }
@@ -39,7 +32,7 @@ img {
 }
 
 #profile-display {
-    @include flexDisplay(column);
+    @include flexDisplayAuth(column);
 
     height: 200px;
     width: 200px;
@@ -49,7 +42,7 @@ img {
 }
 
 .login-container {
-    @include flexDisplay(column);
+    @include flexDisplayAuth(column);
 
     height: 400px;
     width: 400px;
@@ -58,7 +51,7 @@ img {
 }
 
 .register-container {
-    @include flexDisplay(column);
+    @include flexDisplayAuth(column);
 
     height: 550px;
     width: 500px;
@@ -73,13 +66,15 @@ img {
         padding: 5px 10px;
         border-radius: 5px;
         border-style: none;
+        height: 25px;
+        width: 150px;
     }
 }
 
 label {
     color: white;
     margin-right: 10px;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .auth-p {
@@ -89,38 +84,38 @@ label {
 }
 
 .buttons {
-    @include flexDisplay(column);
+    @include flexDisplayAuth(column);
 
     height: 100px;
 
     #main-button {
-        @include flexDisplay(column);
+        @include flexDisplayAuth(column);
     }
 
     #other-button {
-        @include flexDisplay(row);
+        @include flexDisplayAuth(row);
     }
 
     button {
         border: none;
         background-color: transparent;
         color: white;
-        font-size: 20px;
+        font-size: 22px;
         text-decoration: underline;
     }
 }
 
 .register-buttons {
-    @include flexDisplay(column);
+    @include flexDisplayAuth(column);
 
     height: 100px;
 
     #main-register-button {
-        @include flexDisplay(column);
+        @include flexDisplayAuth(column);
     }
 
     #other-register-button {
-        @include flexDisplay(row);
+        @include flexDisplayAuth(row);
     }
 
     button {

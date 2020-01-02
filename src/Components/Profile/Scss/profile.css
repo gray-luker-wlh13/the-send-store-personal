@@ -1,0 +1,93 @@
+.profile-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  padding: 150px 0px;
+  background-color: rgba(167, 224, 247, 0.63);
+}
+
+.profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  align-items: center;
+  height: 550px;
+  width: 500px;
+  border: 1px solid rgba(105, 105, 105, 0.747);
+  background-color: white;
+  border-radius: 15px;
+}
+
+.profile h3 {
+  color: black;
+}
+
+.profile img {
+  height: 200px;
+  width: 200px;
+  margin: 15px 0px;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.profile .favorite-climb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.profile .favorite-climb label {
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.profile .favorite-climb div {
+  height: 100px;
+  border: 1px rgba(105, 105, 105, 0.747) solid;
+  margin: 5px 10px 0px 0px;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 20px;
+}
+
+.profile button {
+  height: 30px;
+  width: 90px;
+  border: 1px rgba(105, 105, 105, 0.747) solid;
+  border-radius: 5px;
+  font-weight: bold;
+  -webkit-box-shadow: 2px 3px #505050;
+          box-shadow: 2px 3px #505050;
+}
+/*# sourceMappingURL=profile.css.map */

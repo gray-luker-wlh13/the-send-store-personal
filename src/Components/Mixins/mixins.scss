@@ -1,0 +1,31 @@
+@mixin flexDisplay(){
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@mixin size(){
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+}
+
+@mixin flexDisplayTwo($direction){
+    display: flex;
+    justify-content: space-around;
+    flex-direction: $direction;
+}
+
+@mixin flexDisplayAuth($direction){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin productFlex(){
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
