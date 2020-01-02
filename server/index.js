@@ -7,6 +7,7 @@ const express = require('express'),
       authCtrl = require('./controllers/authController'),
       homeCtrl = require('./controllers/homeController'),
       cartCtrl = require('./controllers/cartController'),
+      profileCtrl = require('./controllers/profileController'),
       app = express();
 
 app.use(express.json());
@@ -36,6 +37,10 @@ app.post('/api/cart', homeCtrl.addToCart);
 app.get('/api/cart/:id', cartCtrl.getCart);
 app.delete('/api/cart/:id', cartCtrl.removeFromCart);
 app.post('/api/cart/checkout', cartCtrl.checkOut);
+
+//profile endpoints
+app.get('/api/products/:id', profileCtrl.getMyProducts);
+app.delete('/api/products/:id', profileCtrl.deleteProduct);
 
 const port = SERVER_PORT;
 app.listen(port, () => console.log(gradient.cristal(`Sending on port ${port}`)));

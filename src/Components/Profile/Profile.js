@@ -1,10 +1,31 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './Scss/profile.scss';
 import {connect} from 'react-redux';
 import {logout} from '../../redux/reducers/getConsumerReducer';
 
 const Profile = (props) => {
+    const [myProducts, setMyProducts] = useState([]);
+
+    useEffect(() => {
+        getMyProducts()
+    }, [myProducts.length])
+
+    let getMyProducts = () => {
+        axios.get(`/api/products/${props.consumer.consumer.consumer_id}`).then(res => {
+            setMyProducts(res.data)
+        })
+    }
+
+    let deleteProduct = (id) => {
+        axios.delete(`/api/products/${id}`).then(res => {
+            return (
+                getMyProducts(res.data)
+            )
+        })
+    }
+
+
     let logout = () => {
         axios.post('/api/auth/logout').then(res => {
             props.logout(res.data)
@@ -12,6 +33,28 @@ const Profile = (props) => {
         })
     }
 
+    let consumerProducts = myProducts.map((product, i) => {
+        return (
+            <div className='my-products' key={i}>
+                <img src={product.product_img} alt='my-product-img'/>
+                <div className='my-product-info'>
+                    <h3>{product.product_title}</h3>
+                    <h4>${product.price}</h4>
+                    <div id='my-product-condition'>
+                        <label className='my-product-labels'>Condition:</label>{product.condition}
+                    </div>
+                    <label className='my-product-labels'>Description:</label>
+                    <div id='my-product-description'>
+                            {product.product_description}
+                    </div>
+                    <div className='buttons-container'>
+                        <button>Edit Post</button>
+                        <button onClick={() => deleteProduct(product.product_id)}>Delete Post</button>
+                    </div>
+                </div>
+            </div>
+        )
+    })
     
     const {consumer} = props.consumer;
     console.log(props);
@@ -23,7 +66,17 @@ const Profile = (props) => {
                 <div className='favorite-climb'>
                     <label>Favorite Climb:</label><div>{consumer.favorite_climb}</div>
                 </div>
-                <button onClick={logout}>Log Out</button>
+                <div className='buttons-container'>
+                    <button onClick={logout}>Log Out</button>
+                    <button>Edit Profile</button>
+                </div>
+            </div>
+            <div className='consumer-products-container'>
+                <h1>My Products:</h1>
+                <div className='consumer-products'>
+                    {consumerProducts}
+                </div>
+                <button>Add New Post</button>
             </div>
         </div>
     )
@@ -31,7 +84,8 @@ const Profile = (props) => {
 
 const mapStateToProps = (reduxState) => {
     return {
-        consumer: reduxState.consumer
+        consumer: reduxState.consumer,
+        products: reduxState.products
     }
 }
 
