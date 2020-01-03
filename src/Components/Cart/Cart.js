@@ -31,7 +31,7 @@ const Cart = (props) => {
         })
     }
 
-    let mappedCart = cart.map((e, i) => {
+    let mappedCart = cart.sort((a, b) => a.product_id - b.product_id).map((e, i) => {
         return (
             <div className='cart' key={i}>
                 <img src={e.product_img} alt='item-img'/>

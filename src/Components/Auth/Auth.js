@@ -19,7 +19,7 @@ const Auth = (props) => {
         axios.post('/api/auth/login', {username: username, password: password}).then(res => {
             props.getConsumer(res.data)
             props.history.push('/home')
-            console.log(res.data)
+            // console.log(res.data)
         })
     }
 

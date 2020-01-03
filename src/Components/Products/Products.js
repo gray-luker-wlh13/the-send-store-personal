@@ -35,7 +35,7 @@ const Products = (props) => {
     
     // console.log(props.products.products)
     const {products} = props.products;
-    let allProducts = products.map((e, i) => {
+    let allProducts = products.sort((a, b) => a.product_id - b.product_id).map((e, i) => {
         return (
             <div className='products' key={i}>
                 <img src={e.product_img} alt='product-img'/>

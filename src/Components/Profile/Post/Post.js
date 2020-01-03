@@ -10,6 +10,16 @@ const Post = (props) => {
     const [condition, setCondition] = useState('New');
     const [description, setDescrip] = useState('');
 
+    const {consumer} = props.consumer;
+
+    // console.log(props.editItem)
+    useEffect(() => {
+        setImg(props.editItem.product_img)
+        setTitle(props.editItem.product_title)
+        setPrice(props.editItem.price)
+        setCondition(props.editItem.condition)
+        setDescrip(props.editItem.product_description)
+    }, [props.editItem.product_img, props.editItem.product_title, props.editItem.price, props.editItem.condition, props.editItem.product_description])
 
     let addProduct = (props) => {
         axios.post('/api/products', {
@@ -38,7 +48,7 @@ const Post = (props) => {
     let handleSave = () => {
         const {product_id} = props.editItem
         props.updateFn(product_id, {img, title, price, condition, description})
-        props.getFn()
+        props.getFn(consumer.consumer_id)
         cancel() 
     }
 
@@ -50,13 +60,14 @@ const Post = (props) => {
     ];
     const conditionOptions = conditionData.map((e, i) => {
         return (
-            <option value={i} key={i}>
+            <option value={e.name} key={i}>
                 {e.name}
             </option>
         )
     })
 
-    console.log(props.editProduct)
+    // console.log(props.editProduct)
+    // console.log(img, title, price, condition, description, props.editItem.product_id)
     return (
         <div className='post-container'>
            <div className='new-product'>

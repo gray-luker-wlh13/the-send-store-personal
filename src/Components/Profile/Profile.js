@@ -17,12 +17,12 @@ const Profile = (props) => {
     const {consumer} = props.consumer;
 
     useEffect(() => {
-        getMyProducts()
+        getMyProducts(consumer.consumer_id)
     }, [myProducts.length])
 
 
-    let getMyProducts = () => {
-        axios.get(`/api/products/${props.consumer.consumer.consumer_id}`).then(res => {
+    let getMyProducts = (id) => {
+        axios.get(`/api/products/${id}`).then(res => {
             setMyProducts(res.data)
         })
     }
@@ -37,7 +37,9 @@ const Profile = (props) => {
 
     let updateItem = (product_id, body) => {
         axios.put(`/api/products/${product_id}`, body).then(res => {
-            setMyProducts(res.data)
+            return (
+                getMyProducts(consumer.consumer_id)
+            )
         })
     }
 
@@ -55,7 +57,7 @@ const Profile = (props) => {
         // console.log(consumer);
     }
 
-    let consumerProducts = myProducts.map((product, i) => {
+    let consumerProducts = myProducts.sort((a, b) => a.product_id - b.product_id).map((product, i) => {
         return (
             <div className='my-products' key={i}>
                 <img src={product.product_img} alt='my-product-img'/>
@@ -77,13 +79,15 @@ const Profile = (props) => {
             </div>
         )
     })
+
     
 
    
     // console.clear();
     // console.log(consumer);
-    console.log(editProduct)
-    console.log(newProduct)
+    // console.log(editProduct)
+    // console.log(newProduct)
+    console.log(myProducts)
     return(
         <div className='profile-container'>
             {editProduct || newProduct ? (
