@@ -19,6 +19,8 @@
 }
 
 .register {
+    @include flexDisplayAuth(column);
+
     height: 120vh;
     width: 100vw;
     background-color: rgb(37, 37, 37);

@@ -15,15 +15,15 @@
   -ms-flex-pack: distribute;
       justify-content: space-around;
   height: 550px;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0px;
+  top: 220px;
 }
 
 .post-container .new-product {
   height: 550px;
   width: 400px;
-  position: -webkit-sticky;
-  position: sticky;
-  left: 0px;
-  top: 220px;
   border: 1px solid rgba(105, 105, 105, 0.747);
   background-color: white;
   border-radius: 15px;

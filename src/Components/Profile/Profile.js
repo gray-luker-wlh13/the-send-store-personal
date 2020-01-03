@@ -3,16 +3,22 @@ import axios from 'axios';
 import './Scss/profile.scss';
 import {connect} from 'react-redux';
 import {logout} from '../../redux/reducers/getConsumerReducer';
+import {withRouter} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Post from './Post/Post';
 
 const Profile = (props) => {
     const [myProducts, setMyProducts] = useState([]);
     const [editProduct, setEditProduct] = useState(false);
+    const [editProfile, setEditProfile] = useState(false);
     const [newProduct, setNewProduct] = useState(false);
+
+    const {consumer} = props.consumer;
 
     useEffect(() => {
         getMyProducts()
     }, [myProducts.length])
+
 
     let getMyProducts = () => {
         axios.get(`/api/products/${props.consumer.consumer.consumer_id}`).then(res => {
@@ -29,11 +35,12 @@ const Profile = (props) => {
     }
 
 
-    let logout = () => {
-        axios.post('/api/auth/logout').then(res => {
-            props.logout(res.data)
-            props.history.push('/')
+    let logout = async () => {
+         await axios.post('/api/auth/logout').then(res => {
+             console.log(res)
         })
+        props.logout({})
+        // console.log(consumer);
     }
 
     let consumerProducts = myProducts.map((product, i) => {
@@ -51,30 +58,43 @@ const Profile = (props) => {
                             {product.product_description}
                     </div>
                     <div className='buttons-container'>
-                        <button>Edit Post</button>
-                        <button onClick={() => deleteProduct(product.product_id)}>Delete Post</button>
+                        <button onClick={() => setEditProduct(!editProduct)}>Edit</button>
+                        <button onClick={() => deleteProduct(product.product_id)}>Delete</button>
                     </div>
                 </div>
             </div>
         )
     })
     
-    const {consumer} = props.consumer;
-    console.log(props);
+
+   
+    // console.clear();
+    // console.log(consumer);
     return(
         <div className='profile-container'>
-            {/* <div className='profile'>
+            {!newProduct ? (
+                <div className='profile'>
                 <img src={consumer.profile_img} alt='profile-img'/>
                 <h3>{consumer.username}</h3>
                 <div className='favorite-climb'>
                     <label>Favorite Climb:</label><div>{consumer.favorite_climb}</div>
                 </div>
                 <div className='buttons-container'>
-                    <button onClick={logout}>Log Out</button>
-                    <button onClick={() => setEditProduct(!editProduct)}>Edit Profile</button>
+                    <Link to='/'><button onClick={logout}>Log Out</button></Link>
+                    <button onClick={() => setEditProfile(!editProfile)}>Edit Profile</button>
                 </div>
-            </div> */}
-            <Post getFn={getMyProducts} myProducts={myProducts}/>
+            </div>
+            ) : (
+                <>
+                <Post 
+                    getFn={getMyProducts} 
+                    myProducts={myProducts}
+                    newProduct={newProduct}
+                    setNewProduct={setNewProduct}    
+                /> 
+                </>
+            )}
+           
             <div className='consumer-products-container'>
                 <h1>My Products:</h1>
                 <div className='consumer-products'>
@@ -100,4 +120,4 @@ const mapStateToProps = (reduxState) => {
     }
 }
 
-export default connect(mapStateToProps, {logout})(Profile);
+export default withRouter(connect(mapStateToProps, {logout})(Profile));

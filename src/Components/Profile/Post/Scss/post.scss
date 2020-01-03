@@ -5,13 +5,13 @@
     @include flexDisplayAuth(column);
     justify-content: space-around;
     height: 550px;
+    position: sticky;
+    left: 0px;
+    top: 220px;
 
     .new-product {
         height: 550px;
         width: 400px;
-        position: sticky;
-        left: 0px;
-        top: 220px;
         border: 1px solid $borderColor;
         background-color: white;
         border-radius: 15px;

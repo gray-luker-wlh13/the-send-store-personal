@@ -10,7 +10,7 @@ const Post = (props) => {
     const [condition, setCondition] = useState('New');
     const [description, setDescrip] = useState('');
 
-    let addProduct = () => {
+    let addProduct = (props) => {
         axios.post('/api/products', {
             consumer_id: props.consumer.consumer.consumer_id,
             img,
@@ -20,7 +20,22 @@ const Post = (props) => {
             description
         }).then(res => {
             props.getFn(res.data)
+            setImg('')
+            setTitle('')
+            setPrice('')
+            setCondition('New')
+            setDescrip('')
+            props.setNewProduct(!props.newProduct)
         })
+    }
+
+    let cancel = () => {
+        setImg('')
+        setTitle('')
+        setPrice('')
+        setCondition('New')
+        setDescrip('')
+        props.setNewProduct(!props.newProduct)
     }
 
     const conditionData = [
@@ -91,6 +106,7 @@ const Post = (props) => {
                 </div>
            <div className='add-button'>
                <button onClick={() => addProduct()}>Add Product</button>
+               <button onClick={() => cancel()}>Cancel and Go Back</button>
            </div>
            </div>
         </div>
