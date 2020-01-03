@@ -10,9 +10,10 @@ import Post from './Post/Post';
 const Profile = (props) => {
     const [myProducts, setMyProducts] = useState([]);
     const [editProduct, setEditProduct] = useState(false);
-    const [editProfile, setEditProfile] = useState(false);
     const [newProduct, setNewProduct] = useState(false);
     const [editItem, setEditItem] = useState({});
+    const [editProfile, setEditProfile] = useState(false);
+    const [profile, setProfile] = useState({});
 
     const {consumer} = props.consumer;
 
@@ -106,18 +107,37 @@ const Profile = (props) => {
                 </>
             ) : (
                 <div className='profile'>
-                <img src={consumer.profile_img} alt='profile-img'/>
-                <h3>{consumer.username}</h3>
-                <div className='favorite-climb'>
-                    <label>Favorite Climb:</label><div>{consumer.favorite_climb}</div>
+                    <img src={consumer.profile_img} alt='profile-img'/>
+                    <h3>{consumer.username}</h3>
+                    <div className='favorite-climb'>
+                        <label>Favorite Climb:</label><div>{consumer.favorite_climb}</div>
+                    </div>
+                    <div className='buttons-container'>
+                        <Link to='/'><button onClick={logout}>Log Out</button></Link>
+                        <button onClick={() => setEditProfile(!editProfile)}>Edit Profile</button>
+                    </div>
                 </div>
-                <div className='buttons-container'>
-                    <Link to='/'><button onClick={logout}>Log Out</button></Link>
-                    <button onClick={() => setEditProfile(!editProfile)}>Edit Profile</button>
-                </div>
-            </div>
             )}
            
+           {/* {editProduct ? (
+                <div className='consumer-products-container'>
+                <h1>My Products:</h1>
+                <div className='consumer-products'>
+                    {myProducts[0] ? 
+                        <>
+                            {consumerProducts}
+                        </> : (
+                            <div className='empty-products'>
+                                <h2>You have 0 Products!</h2> 
+                            </div>
+                        )}
+                </div>
+                <button onClick={() => setNewProduct(!newProduct)}>Create New Product</button>
+            </div>
+            ) : (
+                <div>Editing Profile</div>
+            )} */}
+            
             <div className='consumer-products-container'>
                 <h1>My Products:</h1>
                 <div className='consumer-products'>
