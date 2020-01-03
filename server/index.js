@@ -42,6 +42,7 @@ app.post('/api/cart/checkout', cartCtrl.checkOut);
 app.get('/api/products/:id', profileCtrl.getMyProducts);
 app.delete('/api/products/:id', profileCtrl.deleteProduct);
 app.post('/api/products', profileCtrl.addProduct);
+app.put('/api/products/:id', profileCtrl.editProduct);
 
 const port = SERVER_PORT;
 app.listen(port, () => console.log(gradient.cristal(`Sending on port ${port}`)));

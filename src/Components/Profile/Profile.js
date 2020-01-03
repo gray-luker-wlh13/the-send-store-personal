@@ -12,6 +12,7 @@ const Profile = (props) => {
     const [editProduct, setEditProduct] = useState(false);
     const [editProfile, setEditProfile] = useState(false);
     const [newProduct, setNewProduct] = useState(false);
+    const [editItem, setEditItem] = useState({});
 
     const {consumer} = props.consumer;
 
@@ -32,6 +33,17 @@ const Profile = (props) => {
                 getMyProducts(res.data)
             )
         })
+    }
+
+    let updateItem = (product_id, body) => {
+        axios.put(`/api/products/${product_id}`, body).then(res => {
+            setMyProducts(res.data)
+        })
+    }
+
+    let select = (i) => {
+        setEditItem(i)
+        setEditProduct(!editProduct)
     }
 
 
@@ -58,7 +70,7 @@ const Profile = (props) => {
                             {product.product_description}
                     </div>
                     <div className='buttons-container'>
-                        <button onClick={() => setEditProduct(!editProduct)}>Edit</button>
+                        <button onClick={() => select(product)}>Edit</button>
                         <button onClick={() => deleteProduct(product.product_id)}>Delete</button>
                     </div>
                 </div>
@@ -70,9 +82,25 @@ const Profile = (props) => {
    
     // console.clear();
     // console.log(consumer);
+    console.log(editProduct)
+    console.log(newProduct)
     return(
         <div className='profile-container'>
-            {!newProduct ? (
+            {editProduct || newProduct ? (
+                <>
+                <Post 
+                    getFn={getMyProducts} 
+                    myProducts={myProducts}
+                    newProduct={newProduct}
+                    setNewProduct={setNewProduct} 
+                    editProduct={editProduct}
+                    setEditProduct={setEditProduct}
+                    editItem={editItem} 
+                    setEditItem={setEditItem}
+                    updateFn={updateItem}
+                /> 
+                </>
+            ) : (
                 <div className='profile'>
                 <img src={consumer.profile_img} alt='profile-img'/>
                 <h3>{consumer.username}</h3>
@@ -84,15 +112,6 @@ const Profile = (props) => {
                     <button onClick={() => setEditProfile(!editProfile)}>Edit Profile</button>
                 </div>
             </div>
-            ) : (
-                <>
-                <Post 
-                    getFn={getMyProducts} 
-                    myProducts={myProducts}
-                    newProduct={newProduct}
-                    setNewProduct={setNewProduct}    
-                /> 
-                </>
             )}
            
             <div className='consumer-products-container'>

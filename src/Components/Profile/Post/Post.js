@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Scss/post.scss';
 import axios from 'axios';
 import {connect} from 'react-redux';
@@ -10,6 +10,7 @@ const Post = (props) => {
     const [condition, setCondition] = useState('New');
     const [description, setDescrip] = useState('');
 
+
     let addProduct = (props) => {
         axios.post('/api/products', {
             consumer_id: props.consumer.consumer.consumer_id,
@@ -20,12 +21,7 @@ const Post = (props) => {
             description
         }).then(res => {
             props.getFn(res.data)
-            setImg('')
-            setTitle('')
-            setPrice('')
-            setCondition('New')
-            setDescrip('')
-            props.setNewProduct(!props.newProduct)
+            cancel()
         })
     }
 
@@ -35,8 +31,18 @@ const Post = (props) => {
         setPrice('')
         setCondition('New')
         setDescrip('')
-        props.setNewProduct(!props.newProduct)
+        props.setNewProduct(false)
+        props.setEditProduct(false)
     }
+
+    let handleSave = () => {
+        const {product_id} = props.editItem
+        props.updateFn(product_id, {img, title, price, condition, description})
+        props.getFn()
+        cancel() 
+    }
+
+
 
     const conditionData = [
         {name: 'New'},
@@ -49,6 +55,8 @@ const Post = (props) => {
             </option>
         )
     })
+
+    console.log(props.editProduct)
     return (
         <div className='post-container'>
            <div className='new-product'>
@@ -105,7 +113,7 @@ const Post = (props) => {
                     />
                 </div>
            <div className='add-button'>
-               <button onClick={() => addProduct()}>Add Product</button>
+               {!props.editProduct ? <button onClick={() => addProduct()}>Add Product</button> : <button onClick={() => handleSave()}>Save Changes</button>}
                <button onClick={() => cancel()}>Cancel and Go Back</button>
            </div>
            </div>
@@ -115,7 +123,8 @@ const Post = (props) => {
 
 const mapStateToProps = (reduxState) => {
     return {
-        consumer: reduxState.consumer
+        consumer: reduxState.consumer,
+        products: reduxState.products
     }
 }
 
