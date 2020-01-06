@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './Scss/profile.scss';
 import {connect} from 'react-redux';
-import {logout} from '../../redux/reducers/getConsumerReducer';
+import {logout, getConsumer} from '../../redux/reducers/getConsumerReducer';
 import {withRouter} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import Post from './Post/Post';
@@ -14,12 +14,20 @@ const Profile = (props) => {
     const [editItem, setEditItem] = useState({});
     const [editProfile, setEditProfile] = useState(false);
     const [profile, setProfile] = useState({});
+    const [profileImg, setProfileImg] = useState('');
+    const [favoriteClimb, setFavClimb] = useState('');
 
     const {consumer} = props.consumer;
 
     useEffect(() => {
         getMyProducts(consumer.consumer_id)
     }, [myProducts.length])
+
+    useEffect(() => {
+        setProfileImg(consumer.profile_img)
+        setFavClimb(consumer.favorite_climb)
+    }, [consumer.profile_img, consumer.favorite_climb])
+    
 
 
     let getMyProducts = (id) => {
@@ -44,9 +52,26 @@ const Profile = (props) => {
         })
     }
 
+    let updateProfile = (id, body) => {
+        axios.put(`/api/profile/${id}`, body).then(res => {
+            props.getConsumer(res.data[0])
+        })
+    }
+
     let select = (i) => {
         setEditItem(i)
         setEditProduct(!editProduct)
+    }
+
+    let cancelEdit = () => {
+        setProfileImg('')
+        setFavClimb('')
+        setEditProfile(false)
+    }
+
+    let saveChange = () => {
+        updateProfile(consumer.consumer_id, {profileImg, favoriteClimb})
+        cancelEdit()
     }
 
 
@@ -88,11 +113,12 @@ const Profile = (props) => {
     
 
    
-    console.clear();
+    // console.clear();
     // console.log(consumer);
-    console.log(editProduct)
-    console.log(newProduct)
+    // console.log(editProduct)
+    // console.log(newProduct)
     // console.log(myProducts)
+    console.log(props);
     return(
         <div className='profile-container'>
             {editProduct || newProduct ? (
@@ -123,7 +149,7 @@ const Profile = (props) => {
                 </div>
             )}
            
-           {/* {editProduct ? (
+           {!editProfile ? (
                 <div className='consumer-products-container'>
                 <h1>My Products:</h1>
                 <div className='consumer-products'>
@@ -139,23 +165,31 @@ const Profile = (props) => {
                 <button onClick={() => setNewProduct(!newProduct)}>Create New Product</button>
             </div>
             ) : (
-                <div>Editing Profile</div>
-            )} */}
-            
-            <div className='consumer-products-container'>
-                <h1>My Products:</h1>
-                <div className='consumer-products'>
-                    {myProducts[0] ? 
-                        <>
-                            {consumerProducts}
-                        </> : (
-                            <div className='empty-products'>
-                                <h2>You have 0 Products!</h2> 
-                            </div>
-                        )}
+                <div className='profile'>
+                    <img src={profileImg} alt='profile-img'/>
+                    <label>Profile Img:</label>
+                    <input
+                        value={profileImg}
+                        type='url'
+                        placeholder='Profile URL here...'
+                        onChange={(e) => setProfileImg(e.target.value)}
+                    />
+                    <h3>{consumer.username}</h3>
+                    <div className='favorite-climb'>
+                        <label>Favorite Climb:</label>
+                        <input 
+                            value={favoriteClimb}
+                            type='text'
+                            placeholder='Type here...'
+                            onChange={(e) => setFavClimb(e.target.value)}
+                        />
+                    </div>
+                    <div className='buttons-container'>
+                        <button onClick={() => cancelEdit()}>Cancel</button>
+                        <button onClick={() => saveChange()}>Save Changes</button>
+                    </div>
                 </div>
-                <button onClick={() => setNewProduct(!newProduct)}>Create New Product</button>
-            </div>
+            )}
         </div>
     )
 }
@@ -167,4 +201,4 @@ const mapStateToProps = (reduxState) => {
     }
 }
 
-export default withRouter(connect(mapStateToProps, {logout})(Profile));
+export default withRouter(connect(mapStateToProps, {logout, getConsumer})(Profile));

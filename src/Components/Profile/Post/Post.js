@@ -12,17 +12,6 @@ const Post = (props) => {
 
     const {consumer} = props.consumer;
 
-    // console.log(props.editItem)
-    // if(props.editItem){
-    //     useEffect(() => {
-    //         setImg(props.editItem.product_img)
-    //         setTitle(props.editItem.product_title)
-    //         setPrice(props.editItem.price)
-    //         setCondition(props.editItem.condition)
-    //         setDescrip(props.editItem.product_description)
-    //     }, [props.editItem.product_img, props.editItem.product_title, props.editItem.price, props.editItem.condition, props.editItem.product_description])
-    // }
-
     useEffect(() => {
         setImg(props.editItem.product_img)
         setTitle(props.editItem.product_title)
@@ -80,8 +69,8 @@ const Post = (props) => {
     // console.log(props.editProduct)
     // console.log(img, title, price, condition, description, props.editItem.product_id)
 
-    console.log(props.newProduct);
-    console.log(props.editProduct);
+    // console.log(props.newProduct);
+    // console.log(props.editProduct);
     return (
         <div className='post-container'>
            <div className='new-product'>

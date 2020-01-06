@@ -35,5 +35,15 @@ module.exports = {
             // console.log(img, title, price, condition, description, id)
         })
         .catch(err => res.status(500).send(err))
+    },
+
+    editProfile: (req, res) => {
+        const {id} = req.params;
+        const {profileImg, favoriteClimb} = req.body;
+        const db = req.app.get('db');
+        db.consumers.edit_profile({profileImg, favoriteClimb, id}).then(response => {
+            res.status(200).send(response)
+        })
+        .catch(err => res.status(500).send(err))
     }
 }
