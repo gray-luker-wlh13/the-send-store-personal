@@ -63,6 +63,10 @@ const Profile = (props) => {
             <div className='my-products' key={i}>
                 <img src={product.product_img} alt='my-product-img'/>
                 <div className='my-product-info'>
+                    <div className='user-id'>
+                        <img src={product.profile_img}/>
+                        <h3>{product.username}</h3>
+                    </div>
                     <h3>{product.product_title}</h3>
                     <h4>${product.price}</h4>
                     <div id='my-product-condition'>

@@ -62,14 +62,14 @@ const Cart = (props) => {
     })
 
     
-    console.log(cart)
+    // console.log(cart)
     return(
             <div className='cart-container'>
                 {mappedCart[0] ? ( <>
                 <div className='cart-items'>
                     {mappedCart}
                 </div>
-                <Checkout cart={cart}/>
+                <Checkout cart={cart} setCart={setCart}/>
                 </>
             ): (
                 <div className='empty-cart'>

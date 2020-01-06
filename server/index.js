@@ -36,7 +36,7 @@ app.post('/api/cart', homeCtrl.addToCart);
 //cart endpoints
 app.get('/api/cart/:id', cartCtrl.getCart);
 app.delete('/api/cart/:id', cartCtrl.removeFromCart);
-app.post('/api/cart/checkout', cartCtrl.checkOut);
+app.post('/api/cart/checkout/:consumer_id', cartCtrl.checkOut);
 
 //profile endpoints
 app.get('/api/products/:id', profileCtrl.getMyProducts);

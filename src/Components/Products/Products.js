@@ -33,7 +33,7 @@ const Products = (props) => {
         }                                 
     }     
     
-    console.log(props.products.products)
+    // console.log(props.products.products)
     const {products} = props.products;
     let allProducts = products.sort((a, b) => a.product_id - b.product_id).map((e, i) => {
         return (
