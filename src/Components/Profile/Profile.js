@@ -31,7 +31,7 @@ const Profile = (props) => {
     let deleteProduct = (id) => {
         axios.delete(`/api/products/${id}`).then(res => {
             return (
-                getMyProducts(res.data)
+                getMyProducts(consumer.consumer_id)
             )
         })
     }
@@ -84,11 +84,11 @@ const Profile = (props) => {
     
 
    
-    // console.clear();
+    console.clear();
     // console.log(consumer);
-    // console.log(editProduct)
-    // console.log(newProduct)
-    console.log(myProducts)
+    console.log(editProduct)
+    console.log(newProduct)
+    // console.log(myProducts)
     return(
         <div className='profile-container'>
             {editProduct || newProduct ? (

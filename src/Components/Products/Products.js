@@ -33,13 +33,17 @@ const Products = (props) => {
         }                                 
     }     
     
-    // console.log(props.products.products)
+    console.log(props.products.products)
     const {products} = props.products;
     let allProducts = products.sort((a, b) => a.product_id - b.product_id).map((e, i) => {
         return (
             <div className='products' key={i}>
                 <img src={e.product_img} alt='product-img'/>
                 <div className='product-info'>
+                    <div className='user-id'>
+                        <img src={e.profile_img}/>
+                        <h3>{e.username}</h3>
+                    </div>
                     <h3>{e.product_title}</h3>
                     <h4>${e.price}</h4>
                     <div id='product-condition'>

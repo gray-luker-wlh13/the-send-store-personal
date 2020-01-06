@@ -58,7 +58,6 @@
 
     .add-button {
         @include flexDisplayAuth(row);
-
         height: 60px;
         width: 400px;
 
@@ -69,6 +68,7 @@
             border-radius: 5px;
             font-weight: bold;
             box-shadow: 2px 3px rgb(80, 80, 80);
+            margin: 10px;
         }
     }
 

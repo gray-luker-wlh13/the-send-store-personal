@@ -36,6 +36,10 @@ const Cart = (props) => {
             <div className='cart' key={i}>
                 <img src={e.product_img} alt='item-img'/>
                 <div className='item-info'>
+                    <div className='user-id'>
+                        <img src={e.profile_img}/>
+                        <h3>{e.username}</h3>
+                    </div>
                     <h3>{e.product_title}</h3>
                     <h4>${e.price}</h4>
                     <div id='item-condition'>
@@ -58,6 +62,7 @@ const Cart = (props) => {
     })
 
     
+    console.log(cart)
     return(
             <div className='cart-container'>
                 {mappedCart[0] ? ( <>

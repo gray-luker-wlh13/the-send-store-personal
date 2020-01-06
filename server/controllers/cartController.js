@@ -24,12 +24,14 @@ module.exports = {
     },
 
     checkOut: (req, res) => {
-        // const db = req.app.get('db');
-        const {token:{id}, price} = req.body;
-        console.log(id, price, stripe);
+        const db = req.app.get('db');
+        // console.log(req.session.consumer);
+        const {consumer_id} = req.session.consumer;
+        const {token:{id}, amount} = req.body;
+        console.log(id, amount, stripe);
         stripe.charges.create(
             {
-                price,
+                amount: 1000,
                 currency: 'usd',
                 source: id,
                 description: 'Test Charge'
@@ -40,7 +42,9 @@ module.exports = {
                     return res.status(500).send(err)
                 } else {
                     console.log('Successful payment', charge);
-                    // do something with that purchase like storing that info on the db
+                    db.orders.checkout_cart(consumer_id).then(() => {
+                        res.sendStatus(200)
+                    })
                     return res.status(200).send(charge)
                 }
             }

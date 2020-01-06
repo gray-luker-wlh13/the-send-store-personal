@@ -1,2 +1,3 @@
-SELECT * FROM products
-WHERE consumer_id = $1;
+SELECT * FROM products p
+JOIN consumer c ON p.consumer_id = c.consumer_id
+WHERE p.consumer_id = $1;
