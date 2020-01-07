@@ -1,12 +1,14 @@
 require('dotenv').config();
 const express = require('express'),
       massive = require('massive'),
+      aws = require('aws-sdk'),
       gradient = require('gradient-string'),
       {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env,
       session = require('express-session'),
       authCtrl = require('./controllers/authController'),
       homeCtrl = require('./controllers/homeController'),
       cartCtrl = require('./controllers/cartController'),
+      awsCtrl = require('./controllers/awsController'),
       profileCtrl = require('./controllers/profileController'),
       app = express();
 
@@ -44,6 +46,10 @@ app.delete('/api/products/:id', profileCtrl.deleteProduct);
 app.post('/api/products', profileCtrl.addProduct);
 app.put('/api/products/:id', profileCtrl.editProduct);
 app.put('/api/profile/:id', profileCtrl.editProfile);
+
+//aws endpoints
+app.get('/api/signs3', awsCtrl.getFile);
+
 
 const port = SERVER_PORT;
 app.listen(port, () => console.log(gradient.cristal(`Sending on port ${port}`)));

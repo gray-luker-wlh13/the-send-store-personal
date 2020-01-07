@@ -13,7 +13,6 @@ const Profile = (props) => {
     const [newProduct, setNewProduct] = useState(false);
     const [editItem, setEditItem] = useState({});
     const [editProfile, setEditProfile] = useState(false);
-    const [profile, setProfile] = useState({});
     const [profileImg, setProfileImg] = useState('');
     const [favoriteClimb, setFavClimb] = useState('');
 
@@ -118,7 +117,7 @@ const Profile = (props) => {
     // console.log(editProduct)
     // console.log(newProduct)
     // console.log(myProducts)
-    console.log(props);
+    // console.log(props);
     return(
         <div className='profile-container'>
             {editProduct || newProduct ? (

@@ -81,7 +81,7 @@ const Post = (props) => {
                     <label>Product Image:</label>
                     <input 
                         value={img}
-                        type='url'
+                        type='text'
                         placeholder='Product URL here...'
                         onChange={(e) => setImg(e.target.value)}
                     />

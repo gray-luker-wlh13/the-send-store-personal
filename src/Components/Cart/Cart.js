@@ -63,6 +63,7 @@ const Cart = (props) => {
 
     
     // console.log(cart)
+    console.log(props.consumer.consumer);
     return(
             <div className='cart-container'>
                 {mappedCart[0] ? ( <>

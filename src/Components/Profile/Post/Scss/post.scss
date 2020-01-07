@@ -4,6 +4,7 @@
 .post-container {
     @include flexDisplayAuth(column);
     justify-content: space-around;
+    
     height: 550px;
     position: sticky;
     left: 0px;
