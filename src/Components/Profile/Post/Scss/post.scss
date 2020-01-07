@@ -2,16 +2,17 @@
 @import '../../../Variables/variables.scss';
 
 .post-container {
-    @include flexDisplayAuth(column);
+    @include flexDisplayAuth(row);
     justify-content: space-around;
     
     height: 550px;
     position: sticky;
     left: 0px;
-    top: 220px;
+    top: 170px;
+    margin-top: 50px;
 
     .new-product {
-        height: 550px;
+        height: 650px;
         width: 400px;
         border: 1px solid $borderColor;
         background-color: white;
@@ -47,6 +48,44 @@
             border: 1px solid $borderColor;
             height: 20px;
             width: 150px;
+        }
+
+        p {
+            border: 1px dotted $borderColor;
+            height: 40px;
+            width: 150px;
+            padding: 5px 0 0 0;
+            border-radius: 5px;
+        }
+    }
+
+    .product-input-img {
+        @include productFlex();
+        align-items: center;
+        
+        margin: 10px 10px;
+        width: 400px;
+
+        label {
+            color: black;
+            font-size: 20px;
+        }
+
+        input {
+            padding: 5px 10px;
+            border-radius: 5px;
+            border-style: none;
+            border: 1px solid $borderColor;
+            height: 20px;
+            width: 150px;
+        }
+
+        p {
+            border: 3px dotted $borderColor;
+            height: 40px;
+            width: 150px;
+            padding: 5px 0 0 0;
+            border-radius: 5px;
         }
     }
 

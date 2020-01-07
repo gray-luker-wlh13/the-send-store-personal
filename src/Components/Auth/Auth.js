@@ -5,8 +5,7 @@ import {getConsumer} from '../../redux/reducers/getConsumerReducer';
 import logo from '../../img/LogoMakr-9WvHiZ-300dpi.png';
 import axios from 'axios';
 import {v4 as randomString} from 'uuid';
-// import Dropzone from 'react-dropzone';
-// import {GridLoader} from 'react-spinners';
+import Dropzone from 'react-dropzone';
 
 const Auth = (props) => {
     const [username, setUsername] = useState('');
@@ -15,7 +14,6 @@ const Auth = (props) => {
     const [profile_img, setProfileImg] = useState('');
     const [favorite_climb, setClimb] = useState('');
     const [clicked, setClick] = useState(false);
-    const [isUploading, setIsUploading] = useState(false);
 
 
     let login = () => {
@@ -39,7 +37,6 @@ const Auth = (props) => {
     }
 
     let getSignedRequest = ([file]) => {
-        setIsUploading(true);
         const fileName = `${randomString()}-${file.name.replace(/\s/g, '-')}`;
 
         axios.get('/api/signs3', {
@@ -55,29 +52,29 @@ const Auth = (props) => {
   };
 
     let uploadFile = (file, signedRequest, url) => {
-    const options = {
-      headers: {
-        'Content-Type': file.type,
-      },
+        const options = {
+        headers: {
+            'Content-Type': file.type,
+        },
+        };
+
+        axios.put(signedRequest, file, options).then(res => {
+            setProfileImg(url);
+        })
+        .catch(err => {
+            if (err.res.status === 403) {
+            alert(
+                `Your request for a signed URL failed with a status 403. Double check the CORS configuration and bucket policy in the README. You also will want to double check your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your .env and ensure that they are the same as the ones that you created in the IAM dashboard. You may need to generate new keys\n${
+                err.stack
+                }`
+            );
+            } else {
+            alert(`ERROR: ${err.status}\n ${err.stack}`);
+        }   
+        });
     };
 
-    axios.put(signedRequest, file, options).then(res => {
-        setIsUploading(false);
-        setProfileImg(url);
-      })
-      .catch(err => {
-        setIsUploading(false);
-        if (err.res.status === 403) {
-          alert(
-            `Your request for a signed URL failed with a status 403. Double check the CORS configuration and bucket policy in the README. You also will want to double check your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your .env and ensure that they are the same as the ones that you created in the IAM dashboard. You may need to generate new keys\n${
-              err.stack
-            }`
-          );
-        } else {
-          alert(`ERROR: ${err.status}\n ${err.stack}`);
-        }
-      });
-    };
+    // console.log(profile_img);
 
     return (
         <div className='auth'>
@@ -123,14 +120,26 @@ const Auth = (props) => {
                            <img src={profile_img ? profile_img : 'https://spacenews.com/wp-content/plugins/events-calendar-pro/src/resources/images/tribe-event-placeholder-image.svg'} alt='profile-pic'/>
                        </div>
                        <div className='input-container'>
-                           <label>Profile Picture</label>
-                           {/* <Dropzone
+                           <label>Profile Picture:</label>
+                           <Dropzone
                             onDropAccepted={getSignedRequest}
                             accept='image/*'
                             multiple={false}
                            >
-                               {isUploading ? <GridLoader /> : <p>Drop file here...</p>}
-                           </Dropzone> */}
+                            {({getRootProps, getInputProps}) => (
+                                <div className="container">
+                                <div
+                                    {...getRootProps({
+                                        className: 'dropzone',
+                                        onDrop: event => event.stopPropagation()
+                                    })}
+                                >
+                             <input {...getInputProps()} />
+                            <p>Drop files here, or click to select files</p> 
+                            </div>
+                            </div>
+                            )}  
+                           </Dropzone>
                        </div>
                        <div className='input-container'>
                             <label>Username:</label>

@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import './Scss/post.scss';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import {v4 as randomString} from 'uuid';
+import Dropzone from 'react-dropzone';
 
 const Post = (props) => {
     const [img, setImg] = useState('');
@@ -52,6 +54,44 @@ const Post = (props) => {
         cancel() 
     }
 
+    let getSignedRequest = ([file]) => {
+        const fileName = `${randomString()}-${file.name.replace(/\s/g, '-')}`;
+
+        axios.get('/api/signs3', {
+            params: {
+                'file-name': fileName,
+                'file-type': file.type
+            }
+        }).then(res => {
+            const {signedRequest, url} = res.data;
+            uploadFile(file, signedRequest, url);
+        })
+        .catch(err => {console.log(err)})
+    };
+
+    let uploadFile = (file, signedRequest, url) => {
+        const options = {
+        headers: {
+            'Content-Type': file.type,
+        },
+        };
+
+        axios.put(signedRequest, file, options).then(res => {
+            setImg(url);
+        })
+        .catch(err => {
+            if (err.res.status === 403) {
+            alert(
+                `Your request for a signed URL failed with a status 403. Double check the CORS configuration and bucket policy in the README. You also will want to double check your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your .env and ensure that they are the same as the ones that you created in the IAM dashboard. You may need to generate new keys\n${
+                err.stack
+                }`
+            );
+            } else {
+            alert(`ERROR: ${err.status}\n ${err.stack}`);
+        }   
+        });
+    };
+
 
 
     const conditionData = [
@@ -77,20 +117,32 @@ const Post = (props) => {
                 <img 
                     src={img ? img : 'https://spacenews.com/wp-content/plugins/events-calendar-pro/src/resources/images/tribe-event-placeholder-image.svg'} alt='profile-pic'
                 />
-                <div className='product-input'>
+                <div className='product-input-img'>
                     <label>Product Image:</label>
-                    <input 
-                        value={img}
-                        type='text'
-                        placeholder='Product URL here...'
-                        onChange={(e) => setImg(e.target.value)}
-                    />
+                        <Dropzone
+                            onDropAccepted={getSignedRequest}
+                            accept='image/*'
+                            multiple={false}
+                        >
+                            {({getRootProps, getInputProps}) => (
+                                <div className="container">
+                                <div
+                                    {...getRootProps({
+                                        className: 'dropzone',
+                                        onDrop: event => event.stopPropagation()
+                                    })}
+                                >
+                             <input {...getInputProps()} />
+                            <p>Drop files here, or click to select files</p> 
+                            </div>
+                            </div>
+                            )}  
+                           </Dropzone>
                 </div>
                 <div className='product-input'>
                     <label>Title:</label>
                     <input
                         value={title}
-                        type='text'
                         placeholder='Product Title'
                         onChange={(e) => setTitle(e.target.value)}
                     />
