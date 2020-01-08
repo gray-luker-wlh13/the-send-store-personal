@@ -113,8 +113,8 @@ const Profile = (props) => {
     
 
    
-    console.clear();
-    console.log(consumer);
+    // console.clear();
+    // console.log(consumer);
     // console.log(editProduct)
     // console.log(newProduct)
     // console.log(myProducts)

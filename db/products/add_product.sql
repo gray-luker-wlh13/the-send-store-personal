@@ -4,12 +4,14 @@ INSERT INTO products (
     product_title,
     price,
     condition,
-    product_description
+    product_description,
+    purchased
 ) VALUES (
     ${consumer_id},
     ${img},
     ${title},
     ${price},
     ${condition},
-    ${description}
+    ${description},
+    FALSE
 );

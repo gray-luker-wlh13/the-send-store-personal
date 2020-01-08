@@ -12,7 +12,7 @@ module.exports = {
     },
 
     removeFromCart: (req, res) => {
-        console.log(req.params)
+        // console.log(req.params)
         const {id} = req.params;
         const newId = +id;
         const db = req.app.get('db');

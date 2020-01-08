@@ -68,8 +68,9 @@
 
 #product-description {
     height: 100px;
+    width: 275px;
     border: 1px $borderColor solid;
-    margin: 5px 10px 0px 0px;
+    margin: 5px 10px 5px -6px;
     overflow: scroll;
 }
 
@@ -93,6 +94,7 @@
         border-radius: 5px;
         font-weight: bold;
         box-shadow: 2px 3px rgb(80, 80, 80);
+        margin-top: 5px;
     }
 }
 

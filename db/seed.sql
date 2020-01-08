@@ -13,7 +13,8 @@ CREATE TABLE products (
     product_title VARCHAR(50),
     price DECIMAL,
     condition TEXT,
-    product_description TEXT
+    product_description TEXT,
+    purchased BOOLEAN
 );
 
 CREATE TABLE consumer_order (

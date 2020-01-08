@@ -1,13 +1,17 @@
-import React from 'react';
-import {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import './Scss/products.scss';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {getProducts} from '../../redux/reducers/getProductsReducer';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 
 const Products = (props) => {
+    
+
     const {username, consumer_order_id} = props.consumer.consumer;
+    const MySwal = withReactContent(Swal);
 
     useEffect(() => {
         getProducts();
@@ -26,15 +30,18 @@ const Products = (props) => {
                 product_id,
                 price
             }).then(res => {
-                return (
-                    getProducts(res.data)
-                )
+                getProducts(res.data)
+                    MySwal.fire({
+                        icon: 'success',
+                        title: 'Item successfully added!'
+                    })
             })
         }                                 
     }     
     
     // console.log(props.products.products)
     const {products} = props.products;
+    console.log(products);
     let allProducts = products.sort((a, b) => a.product_id - b.product_id).map((e, i) => {
         return (
             <div className='products' key={i}>
