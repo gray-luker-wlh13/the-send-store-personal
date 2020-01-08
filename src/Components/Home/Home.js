@@ -1,14 +1,30 @@
 import React from 'react';
 import './Scss/home.scss';
 import Products from '../Products/Products';
+import Search from './Search/Search';
+import {connect} from 'react-redux';
 
 
-const Home = () => {
+const Home = (props) => {
+
+    console.log(props.search.searchClicked)
     return(
         <div className='home'>
-            <Products />
+            {props.search.searchClicked ? (
+                <>
+                    <Search />
+                </>
+            ) : (
+                <>
+                    <Products />
+                </>
+            )}
         </div>
     )
 }
 
-export default Home;
+const mapStateToProps = (reduxState) => {
+    return reduxState
+}
+
+export default connect(mapStateToProps)(Home);

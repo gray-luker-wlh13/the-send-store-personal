@@ -128,16 +128,16 @@ const Auth = (props) => {
                            >
                             {({getRootProps, getInputProps}) => (
                                 <div className="container">
-                                <div
-                                    {...getRootProps({
+                                    <div
+                                        {...getRootProps({
                                         className: 'dropzone',
                                         onDrop: event => event.stopPropagation()
-                                    })}
-                                >
-                             <input {...getInputProps()} />
-                            <p>Drop files here, or click to select files</p> 
-                            </div>
-                            </div>
+                                        })}
+                                    >
+                                        <input {...getInputProps()} />
+                                        <p>Drop files here, or click to select files</p> 
+                                    </div>
+                                </div>
                             )}  
                            </Dropzone>
                        </div>
