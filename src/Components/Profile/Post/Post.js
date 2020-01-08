@@ -108,7 +108,7 @@ const Post = (props) => {
 
     // console.log(props.editProduct)
     // console.log(img, title, price, condition, description, props.editItem.product_id)
-
+    console.clear();
     // console.log(props.newProduct);
     // console.log(props.editProduct);
     return (
@@ -126,16 +126,16 @@ const Post = (props) => {
                         >
                             {({getRootProps, getInputProps}) => (
                                 <div className="container">
-                                <div
-                                    {...getRootProps({
-                                        className: 'dropzone',
-                                        onDrop: event => event.stopPropagation()
-                                    })}
-                                >
-                             <input {...getInputProps()} />
-                            <p>Drop files here, or click to select files</p> 
-                            </div>
-                            </div>
+                                    <div
+                                        {...getRootProps({
+                                            className: 'dropzone',
+                                            onDrop: event => event.stopPropagation()
+                                        })}
+                                    >
+                                        <input {...getInputProps()} />
+                                        <p>Drop files here, or click to select files</p> 
+                                    </div>
+                                </div>
                             )}  
                            </Dropzone>
                 </div>
@@ -143,6 +143,7 @@ const Post = (props) => {
                     <label>Title:</label>
                     <input
                         value={title}
+                        type='text'
                         placeholder='Product Title'
                         onChange={(e) => setTitle(e.target.value)}
                     />

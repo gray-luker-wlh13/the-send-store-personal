@@ -54,6 +54,7 @@ const Profile = (props) => {
     let updateProfile = (id, body) => {
         axios.put(`/api/profile/${id}`, body).then(res => {
             props.getConsumer(res.data[0])
+            console.log(res.data)
         })
     }
 
@@ -112,8 +113,8 @@ const Profile = (props) => {
     
 
    
-    // console.clear();
-    // console.log(consumer);
+    console.clear();
+    console.log(consumer);
     // console.log(editProduct)
     // console.log(newProduct)
     // console.log(myProducts)
