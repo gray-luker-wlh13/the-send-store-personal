@@ -6,6 +6,9 @@ import {logout, getConsumer} from '../../redux/reducers/getConsumerReducer';
 import {withRouter} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import Post from './Post/Post';
+import Flip from 'react-reveal/Flip';
+import {v4 as randomString} from 'uuid';
+import Dropzone from 'react-dropzone';
 
 const Profile = (props) => {
     const [myProducts, setMyProducts] = useState([]);
@@ -83,6 +86,44 @@ const Profile = (props) => {
         // console.log(consumer);
     }
 
+    let getSignedRequest = ([file]) => {
+        const fileName = `${randomString()}-${file.name.replace(/\s/g, '-')}`;
+
+        axios.get('/api/signs3', {
+            params: {
+                'file-name': fileName,
+                'file-type': file.type
+            }
+        }).then(res => {
+            const {signedRequest, url} = res.data;
+            uploadFile(file, signedRequest, url);
+        })
+        .catch(err => {console.log(err)})
+    };
+
+    let uploadFile = (file, signedRequest, url) => {
+        const options = {
+        headers: {
+            'Content-Type': file.type,
+        },
+        };
+
+        axios.put(signedRequest, file, options).then(res => {
+            setProfileImg(url);
+        })
+        .catch(err => {
+            if (err.res.status === 403) {
+            alert(
+                `Your request for a signed URL failed with a status 403. Double check the CORS configuration and bucket policy in the README. You also will want to double check your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your .env and ensure that they are the same as the ones that you created in the IAM dashboard. You may need to generate new keys\n${
+                err.stack
+                }`
+            );
+            } else {
+            alert(`ERROR: ${err.status}\n ${err.stack}`);
+        }   
+        });
+    };
+
     let consumerProducts = myProducts.sort((a, b) => a.product_id - b.product_id).map((product, i) => {
         return (
             <div className='my-products' key={i}>
@@ -123,72 +164,95 @@ const Profile = (props) => {
         <div className='profile-container'>
             {editProduct || newProduct ? (
                 <>
-                <Post 
-                    getFn={getMyProducts} 
-                    myProducts={myProducts}
-                    newProduct={newProduct}
-                    setNewProduct={setNewProduct} 
-                    editProduct={editProduct}
-                    setEditProduct={setEditProduct}
-                    editItem={editItem} 
-                    setEditItem={setEditItem}
-                    updateFn={updateItem}
-                /> 
+                <Flip right delay={100} duration={1000}>
+                    <Post 
+                        getFn={getMyProducts} 
+                        myProducts={myProducts}
+                        newProduct={newProduct}
+                        setNewProduct={setNewProduct} 
+                        editProduct={editProduct}
+                        setEditProduct={setEditProduct}
+                        editItem={editItem} 
+                        setEditItem={setEditItem}
+                        updateFn={updateItem}
+                    /> 
+                </Flip>
                 </>
             ) : (
-                <div className='profile'>
-                    <img src={consumer.profile_img} alt='profile-img'/>
-                    <h3>{consumer.username}</h3>
-                    <div className='favorite-climb'>
-                        <label>Favorite Climb:</label><div>{consumer.favorite_climb}</div>
+                <Flip left delay={100} duration={1000}>
+                    <div className='profile'>
+                        <img src={consumer.profile_img} alt='profile-img'/>
+                        <h3>{consumer.username}</h3>
+                        <div className='favorite-climb'>
+                            <label>Favorite Climb:</label><div>{consumer.favorite_climb}</div>
+                        </div>
+                        <div className='buttons-container'>
+                            <Link to='/'><button onClick={logout}>Log Out</button></Link>
+                            <button onClick={() => setEditProfile(!editProfile)}>Edit Profile</button>
+                        </div>
                     </div>
-                    <div className='buttons-container'>
-                        <Link to='/'><button onClick={logout}>Log Out</button></Link>
-                        <button onClick={() => setEditProfile(!editProfile)}>Edit Profile</button>
-                    </div>
-                </div>
+                </Flip>
             )}
            
            {!editProfile ? (
+            <Flip right delay={100} duration={1000}>
                 <div className='consumer-products-container'>
-                <h1>My Products:</h1>
-                <div className='consumer-products'>
-                    {myProducts[0] ? 
-                        <>
-                            {consumerProducts}
-                        </> : (
-                            <div className='empty-products'>
-                                <h2>You have 0 Products!</h2> 
-                            </div>
-                        )}
+                    <h1>My Products:</h1>
+                    <div className='consumer-products'>
+                        {myProducts[0] ? 
+                            <>
+                                {consumerProducts}
+                            </> : (
+                                <div className='empty-products'>
+                                    <h2>You have 0 Products!</h2> 
+                                </div>
+                            )}
+                    </div>
+                    <button onClick={() => setNewProduct(!newProduct)}>Create New Product</button>
                 </div>
-                <button onClick={() => setNewProduct(!newProduct)}>Create New Product</button>
-            </div>
+            </Flip>
             ) : (
-                <div className='profile'>
-                    <img src={profileImg} alt='profile-img'/>
-                    <label>Profile Img:</label>
-                    <input
-                        value={profileImg}
-                        type='url'
-                        placeholder='Profile URL here...'
-                        onChange={(e) => setProfileImg(e.target.value)}
-                    />
-                    <h3>{consumer.username}</h3>
-                    <div className='favorite-climb'>
-                        <label>Favorite Climb:</label>
-                        <input 
-                            value={favoriteClimb}
-                            type='text'
-                            placeholder='Type here...'
-                            onChange={(e) => setFavClimb(e.target.value)}
-                        />
+                <>
+                <Flip left delay={100} duration={1000}>
+                    <div className='profile'>
+                        <img src={profileImg} alt='profile-img'/>
+                        <label>Profile Img:</label>
+                        <Dropzone
+                            onDropAccepted={getSignedRequest}
+                            accept='image/*'
+                            multiple={false}
+                        >
+                            {({getRootProps, getInputProps}) => (
+                                <div className="container">
+                                    <div
+                                        {...getRootProps({
+                                            className: 'dropzone',
+                                            onDrop: event => event.stopPropagation()
+                                        })}
+                                    >
+                                        <input {...getInputProps()} />
+                                        <p>Drop files here, or click to select files</p> 
+                                    </div>
+                                </div>
+                            )}  
+                        </Dropzone>
+                        <h3>{consumer.username}</h3>
+                        <div className='favorite-climb'>
+                            <label>Favorite Climb:</label>
+                            <input 
+                                value={favoriteClimb}
+                                type='text'
+                                placeholder='Type here...'
+                                onChange={(e) => setFavClimb(e.target.value)}
+                            />
+                        </div>
+                        <div className='buttons-container'>
+                            <button onClick={() => cancelEdit()}>Cancel</button>
+                            <button onClick={() => saveChange()}>Save Changes</button>
+                        </div>
                     </div>
-                    <div className='buttons-container'>
-                        <button onClick={() => cancelEdit()}>Cancel</button>
-                        <button onClick={() => saveChange()}>Save Changes</button>
-                    </div>
-                </div>
+                </Flip>
+                </>
             )}
         </div>
     )

@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 import {getProducts} from '../../redux/reducers/getProductsReducer';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import {Link} from 'react-router-dom';
+import Fade from 'react-reveal/Fade';
 
 
 const Products = (props) => {
@@ -20,6 +22,12 @@ const Products = (props) => {
     let getProducts = () => {
         axios.get('/api/products').then(res => {
             props.getProducts(res.data)
+        })
+    }
+
+    let getProfile = (id) => {
+        axios.get(`/api/profile/${id}`).then(res => {
+            
         })
     }
 
@@ -49,7 +57,7 @@ const Products = (props) => {
                 <div className='product-info'>
                     <div className='user-id'>
                         <img src={e.profile_img}/>
-                        <h3>{e.username}</h3>
+                        <h3 onClick={() => getProfile(e.consumer_id)}>{e.username}</h3>
                     </div>
                     <h3>{e.product_title}</h3>
                     <h4>${e.price}</h4>
@@ -73,7 +81,9 @@ const Products = (props) => {
 
     return (
         <div className='products-container'>
-            {allProducts}
+            {/* <Fade right delay={100} duration={1000}> */}
+                {allProducts}
+            {/* </Fade> */}
         </div>
     )
 }

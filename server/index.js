@@ -34,6 +34,7 @@ app.post('/api/auth/logout', authCtrl.logout);
 //home endpoints
 app.get('/api/products', homeCtrl.getProducts);
 app.post('/api/cart', homeCtrl.addToCart);
+app.get('/api/profile/:id', homeCtrl.getProfile);
 
 //cart endpoints
 app.get('/api/cart/:id', cartCtrl.getCart);
@@ -46,6 +47,7 @@ app.delete('/api/products/:id', profileCtrl.deleteProduct);
 app.post('/api/products', profileCtrl.addProduct);
 app.put('/api/products/:id', profileCtrl.editProduct);
 app.put('/api/profile/:id', profileCtrl.editProfile);
+
 
 //aws endpoints
 app.get('/api/signs3', awsCtrl.getFile);

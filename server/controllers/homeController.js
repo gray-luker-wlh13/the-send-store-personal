@@ -15,5 +15,14 @@ module.exports = {
             // console.log(res);
         })
         .catch(err => res.status(500).send(err))
+    },
+
+    getProfile: (req, res) => {
+        const {id} = req.params;
+        const db = req.app.get('db');
+        db.consumers.get_profile(+id).then(profile => {
+            res.status(200).send(profile)
+        })
+        .catch(err => res.status(500).send(err))
     }
 }

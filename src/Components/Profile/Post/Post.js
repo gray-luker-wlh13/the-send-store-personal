@@ -137,7 +137,7 @@ const Post = (props) => {
                                     </div>
                                 </div>
                             )}  
-                           </Dropzone>
+                        </Dropzone>
                 </div>
                 <div className='product-input'>
                     <label>Title:</label>
