@@ -24,7 +24,7 @@ const Checkout = (props) => {
 
     useEffect(() => {
         setTotal(checkedCart)
-    }, [checkedCart])
+    }, [checkedCart.length])
 
     const onToken = (token) => {
         const {consumer} = props.consumer
@@ -42,7 +42,7 @@ const Checkout = (props) => {
                 footer: 'Your reciept is in you email.'
             })
             setTotal(0)
-            // props.history.push('/home')
+            props.history.push('/home')
         })
     }
 
