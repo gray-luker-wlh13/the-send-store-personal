@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './Scss/auth.scss';
+import useInput from '../../hooks/useInput';
 import {connect} from 'react-redux';
 import {getConsumer} from '../../redux/reducers/getConsumerReducer';
 import logo from '../../img/LogoMakr-9WvHiZ-300dpi.png';
@@ -8,11 +9,15 @@ import {v4 as randomString} from 'uuid';
 import Dropzone from 'react-dropzone';
 
 const Auth = (props) => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    // const [username, setUsername] = useState('');
+    // const [password, setPassword] = useState('');
+
+    const [username, bindUserName] = useInput('');
+    const [password, bindPassword] = useInput('');
+    const [favorite_climb, bindFavoriteClimb] = useInput('');
 
     const [profile_img, setProfileImg] = useState('');
-    const [favorite_climb, setClimb] = useState('');
+    // const [favorite_climb, setClimb] = useState('');
     const [clicked, setClick] = useState(false);
 
 
@@ -85,19 +90,17 @@ const Auth = (props) => {
                         <div className='input-container'>
                             <label>Username:</label>
                             <input 
-                                value={username}
+                                {...bindUserName}
                                 type='email'
                                 placeholder='Enter Username'
-                                onChange={(e) => setUsername(e.target.value)}
                             />
                         </div>
                         <div className='input-container'>
                             <label>Password:</label>
                             <input 
-                                value={password}
+                                {...bindPassword}
                                 type='password'
                                 placeholder='Enter Password'
-                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
                         <div className='buttons'>
@@ -144,28 +147,25 @@ const Auth = (props) => {
                        <div className='input-container'>
                             <label>Username:</label>
                             <input 
-                                value={username}
+                                {...bindUserName}
                                 type='email'
                                 placeholder='Enter Username'
-                                onChange={(e) => setUsername(e.target.value)}
                             />
                        </div>
                        <div className='input-container'>
                             <label>Password:</label>
                             <input 
-                                value={password}
+                                {...bindPassword}
                                 type='password'
                                 placeholder='Enter Password'
-                                onChange={(e) => setPassword(e.target.value)}
                             />
                        </div>
                        <div className='input-container'>
                             <label>Favorite Climb:</label>
                             <input 
-                                value={favorite_climb}
+                                {...bindFavoriteClimb}
                                 type='text'
                                 placeholder='Favorite Climb...'
-                                onChange={(e) => setClimb(e.target.value)}
                             />
                        </div>
                        <div className='register-buttons'>

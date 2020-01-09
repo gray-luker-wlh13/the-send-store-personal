@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './Scss/search.scss';
+import useInput from '../../../hooks/useInput';
 import {cancelToggle} from '../../../redux/reducers/searchReducer';
 import {connect} from 'react-redux';
 import axios from 'axios';
@@ -9,7 +10,7 @@ import withReactContent from 'sweetalert2-react-content';
 import Slide from 'react-reveal/Slide';
 
 const Search = (props) => {
-    const [search, setSearch] = useState('');
+    const [search, bindSearch] = useInput('');
     const [desClicked, setDesClicked] = useState(false);
     const [viewDescrip, setViewDescrip] = useState(0);
 
@@ -94,10 +95,9 @@ const Search = (props) => {
             <Slide top delay={100} duration={1000}>
                 <div className='search'>
                     <input 
-                        value={search}
+                        {...bindSearch}
                         type='text'
                         placeholder='Search for anything...'
-                        onChange={(e) => setSearch(e.target.value)}
                     />
                     <button onClick={props.cancelToggle}>X</button>
                 </div>

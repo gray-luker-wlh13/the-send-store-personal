@@ -8,7 +8,7 @@ import Fade from 'react-reveal/Fade'
 
 const Home = (props) => {
 
-    console.log(props.search.searchClicked)
+    // console.log(props.search.searchClicked)
     return(
         <div className='home'>
             {props.search.searchClicked ? (
