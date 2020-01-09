@@ -30,6 +30,16 @@
     border-radius: 15px;
     margin-right: 20px;
 
+    #go-back{
+        height: 30px;
+        width: 90px;
+        border: 1px $borderColor solid;
+        border-radius: 5px;
+        font-weight: bold;
+        box-shadow: 2px 3px rgb(80, 80, 80);
+        margin: 10px;
+    }
+
 
     h3 {
         color: black;

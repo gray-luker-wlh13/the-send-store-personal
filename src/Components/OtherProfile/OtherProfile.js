@@ -96,6 +96,7 @@ const OtherProfile = (props) => {
                 <div className='favorite-climb'>
                     <label>Favorite Climb:</label><div>{users.favorite_climb}</div>
                 </div>
+                <button id='go-back' onClick={() => props.history.goBack()}>Go Back</button>
             </div>
         )
     })
