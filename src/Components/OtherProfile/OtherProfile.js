@@ -2,21 +2,32 @@ import React, {useState, useEffect} from 'react';
 import './Scss/otherProfile.scss';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 const OtherProfile = (props) => {
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState([]);
     const [theirProducts, setTheirProducts] = useState([])
     const [desClicked, setDesClicked] = useState(false);
     const [viewDescrip, setViewDescrip] = useState(0);
     
     const {id} = props.match.params;
+    const MySwal = withReactContent(Swal);
+    const {username, consumer_order_id} = props.consumer.consumer;
 
     useEffect(() => {
-        getProfile(id);
-    }, [theirProducts.length])
+        getProfile(id)
+        getTheirProducts(id)
+    }, [user.username, theirProducts.length])
     
     let getProfile = (id) => {
         axios.get(`/api/otherprofile/${id}`).then(res => {
+            setUser(res.data)
+        })
+    }
+
+    let getTheirProducts = (id) => {
+        axios.get(`/api/products/${id}`).then(res => {
             setTheirProducts(res.data)
         })
     }
@@ -26,7 +37,23 @@ const OtherProfile = (props) => {
         setViewDescrip(product_id)
     }
 
-    let consumerProducts = theirProducts.sort((a, b) => a.product_id - b.product_id).map((product, i) => {
+    let addToCart = (product_id, price) => {
+        if(username){
+            axios.post('/api/cart', {
+                consumer_order_id: consumer_order_id,
+                product_id,
+                price
+            }).then(res => {
+                // getProducts(res.data)
+                    MySwal.fire({
+                        icon: 'success',
+                        title: 'Item successfully added!'
+                    })
+            })
+        }                                 
+    } 
+
+    let userProducts = theirProducts.sort((a, b) => a.product_id - b.product_id).map((product, i) => {
         return (
             <div className='my-products' key={i}>
                 <img src={product.product_img} alt='my-product-img'/>
@@ -51,33 +78,47 @@ const OtherProfile = (props) => {
                         <button id='read' onClick={() => seeMore(product.product_id)}>Read More +</button>
                     )}
                     <div className='buttons-container'>
-                        <button>Add to Cart</button>
+                    <button id='add-to-cart'
+                    onClick={() => addToCart(product.product_id, product.price)}>
+                        Add To Cart
+                    </button>
                     </div>
                 </div>
             </div>
         )
     })
 
-    console.clear()
-    console.log(theirProducts)
-    return (
-        <div className='profile-container'>
-            <div className='profile'>
-                <img src={theirProducts[0].profile_img} alt='profile-img'/>
-                <h3>{theirProducts[0].username}</h3>
+    let mappedUser = user.map((users, i) => {
+        return (
+            <div className='profile' key={i}>
+                <img src={users.profile_img} alt='profile-img'/>
+                <h3>{users.username}</h3>
                 <div className='favorite-climb'>
-                    <label>Favorite Climb:</label><div>{theirProducts[0].favorite_climb}</div>
+                    <label>Favorite Climb:</label><div>{users.favorite_climb}</div>
                 </div>
             </div>
+        )
+    })
+
+    let mappedUsernameProducts = user.map((users, i) => <h1 key={i}>{users.username}'s Products:</h1>)
+
+    let mappedUsernameNo = user.map((user, i) => <h2 key={i}>{user.username} has no Products</h2>)
+
+    // console.clear()
+    // console.log(user)
+    // console.log(theirProducts)
+    return (
+        <div className='profile-container'>
+            {mappedUser}
             <div className='consumer-products-container'>
-                <h1>{theirProducts[0].username}'s Products:</h1>
+                {mappedUsernameProducts}
                 <div className='consumer-products'>
                     {theirProducts[0] ? 
                     <>
-                        {consumerProducts}
+                        {userProducts}
                     </> : (
                         <div className='empty-products'>
-                            <h2>{theirProducts[0].username} has no Products!</h2> 
+                            {mappedUsernameNo}
                         </div>
                     )}
                 </div>
@@ -88,7 +129,8 @@ const OtherProfile = (props) => {
 
 const mapStateToProps = (reduxState) => {
     return {
-        products: reduxState.products
+        products: reduxState.products,
+        consumer: reduxState.consumer
     }
 }
 

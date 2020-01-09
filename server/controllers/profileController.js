@@ -8,6 +8,15 @@ module.exports = {
         .catch(err => res.status(500).send(err))
     },
 
+    getTheirProducts: (req, res) => {
+        const {id} = req.params;
+        const db = req.app.get('db');
+        db.products.get_other_products({id}).then(products => {
+            res.status(200).send(products)
+        })
+        .catch(err => res.status(500).send(err))
+    },
+
     deleteProduct: (req, res) => {
         const {id} = req.params;
         const db = req.app.get('db');

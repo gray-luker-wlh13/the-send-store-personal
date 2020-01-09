@@ -46,7 +46,11 @@
     width: 280px;
     margin: 20px 20px 0px 20px;
     h3 {
-        margin: 5px 0px
+        margin: 5px 0px;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
     h4 {
         margin: 5px 0px;

@@ -67,6 +67,10 @@
   margin: 5px 0px;
 }
 
+.product-info h3:hover {
+  cursor: pointer;
+}
+
 .product-info h4 {
   margin: 5px 0px;
 }

@@ -18,7 +18,7 @@ module.exports = {
     },
 
     getProfile: (req, res) => {
-        console.log(req.params)
+        // console.log(req.params)
         const {id} = req.params;
         const db = req.app.get('db');
         db.consumers.get_profile({id}).then(profile => {
