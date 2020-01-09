@@ -5,6 +5,7 @@ import {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import Slide from 'react-reveal/Slide';
 
 const Cart = (props) => {
     const [cart, setCart] = useState([]);
@@ -63,19 +64,25 @@ const Cart = (props) => {
 
     
     // console.log(cart)
-    console.log(props.consumer.consumer);
+    // console.log(props.consumer.consumer);
     return(
-            <div className='cart-container'>
+        <div className='cart-container'>
                 {mappedCart[0] ? ( <>
-                <div className='cart-items'>
-                    {mappedCart}
-                </div>
-                <Checkout cart={cart} setCart={setCart}/>
+                <Slide left delay={100} duration={1000}>
+                    <div className='cart-items'>
+                        {mappedCart}
+                    </div>
+                </Slide>
+                <Slide right delay={100} duration={1000}>
+                    <Checkout cart={cart} setCart={setCart}/>
+                </Slide>
                 </>
             ): (
-                <div className='empty-cart'>
-                    <h2>Your cart is currently empty, go to <Link to='/home'    id='home-link'>Home</Link> for products.</h2>
-                </div>
+                <Slide top delay={100} duration={1000}>
+                    <div className='empty-cart'>
+                        <h2>Your cart is currently empty, go to <Link to='/home'    id='home-link'>Home</Link> for products.</h2>
+                    </div>
+                </Slide>
             )}
         </div>
     )

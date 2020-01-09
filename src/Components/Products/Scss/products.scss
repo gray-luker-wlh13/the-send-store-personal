@@ -71,7 +71,7 @@
     width: 275px;
     border: 1px $borderColor solid;
     margin: 5px 10px 5px -6px;
-    overflow: scroll;
+    overflow-y: hidden;
 }
 
 #product-condition {

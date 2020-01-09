@@ -19,6 +19,8 @@ const Profile = (props) => {
     const [profileImg, setProfileImg] = useState('');
     const [favoriteClimb, setFavClimb] = useState('');
 
+    // this.state = {myProducts: []}
+
     const {consumer} = props.consumer;
 
     useEffect(() => {
@@ -57,7 +59,7 @@ const Profile = (props) => {
     let updateProfile = (id, body) => {
         axios.put(`/api/profile/${id}`, body).then(res => {
             props.getConsumer(res.data[0])
-            console.log(res.data)
+            // console.log(res.data)
         })
     }
 

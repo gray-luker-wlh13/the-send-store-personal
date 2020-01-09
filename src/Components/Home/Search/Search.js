@@ -6,6 +6,7 @@ import axios from 'axios';
 import {getProducts} from '../../../redux/reducers/getProductsReducer';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import Slide from 'react-reveal/Slide';
 
 const Search = (props) => {
     const [search, setSearch] = useState('');
@@ -77,16 +78,20 @@ const Search = (props) => {
 
     return (
         <div className='search-container'>
-            <div className='search'>
-                <input 
-                    value={search}
-                    type='text'
-                    placeholder='Search for anything...'
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <button onClick={props.cancelToggle}>X</button>
-            </div>
-            {allProducts}
+            <Slide top delay={100} duration={1000}>
+                <div className='search'>
+                    <input 
+                        value={search}
+                        type='text'
+                        placeholder='Search for anything...'
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                    <button onClick={props.cancelToggle}>X</button>
+                </div>
+            </Slide>
+            <Slide bottom delay={100} duration={1000}>
+                {allProducts}
+            </Slide>
         </div>
     )
 }
