@@ -9,6 +9,8 @@ import Slide from 'react-reveal/Slide';
 
 const Cart = (props) => {
     const [cart, setCart] = useState([]);
+    const [desClicked, setDesClicked] = useState(false);
+    const [viewDescrip, setViewDescrip] = useState(0);
 
     useEffect(() => {
         // console.log('hit')
@@ -32,6 +34,11 @@ const Cart = (props) => {
         })
     }
 
+    let seeMore = (product_id) => {
+        setDesClicked(!desClicked)
+        setViewDescrip(product_id)
+    }
+
     let mappedCart = cart.sort((a, b) => a.product_id - b.product_id).map((e, i) => {
         return (
             <div className='cart' key={i}>
@@ -47,9 +54,15 @@ const Cart = (props) => {
                         <label className='item-labels'>Condition:</label>{e.condition}
                     </div>
                     <label className='item-labels'>Description:</label>
-                    <div id='item-description'>
-                        {e.product_description}
-                    </div>
+                    {desClicked && viewDescrip === e.product_id ? ( <>
+                            <div id='product-description'>
+                                {e.product_description}
+                            </div>
+                            <button onClick={() => seeMore(e.product_id)}>Read Less -</button>
+                        </>
+                    ) : (
+                        <button onClick={() => seeMore(e.product_id)}>Read More +</button>
+                    )}
                 </div>
                 <div id='remove-button-container'>
                     <button id='remove-from-cart'

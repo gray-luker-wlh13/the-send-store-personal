@@ -10,6 +10,8 @@ import Slide from 'react-reveal/Slide';
 
 const Search = (props) => {
     const [search, setSearch] = useState('');
+    const [desClicked, setDesClicked] = useState(false);
+    const [viewDescrip, setViewDescrip] = useState(0);
 
     const MySwal = withReactContent(Swal);
     const {username, consumer_order_id} = props.consumer.consumer;
@@ -40,6 +42,11 @@ const Search = (props) => {
         }                                 
     }
 
+    let seeMore = (product_id) => {
+        setDesClicked(!desClicked)
+        setViewDescrip(product_id)
+    }
+
     const {products} = props.products;
     // console.log(products);
     let allProducts = products.sort((a, b) => a.product_id - b.product_id).filter((e) => {
@@ -61,9 +68,15 @@ const Search = (props) => {
                         <label className='product-labels'>Condition:</label>{e.condition}
                     </div>
                     <label className='product-labels'>Description:</label>
-                    <div id='product-description'>
-                            {e.product_description}
-                    </div>
+                    {desClicked && viewDescrip === e.product_id ? ( <>
+                            <div id='product-description'>
+                                {e.product_description}
+                            </div>
+                            <button onClick={() => seeMore(e.product_id)}>Read Less -</button>
+                        </>
+                    ) : (
+                        <button onClick={() => seeMore(e.product_id)}>Read More +</button>
+                    )}
                 </div>
                 <div id='add-button-container'>
                     <button id='add-to-cart'

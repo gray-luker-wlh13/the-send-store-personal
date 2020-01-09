@@ -4,7 +4,7 @@
     @include flexDisplay();
 
     height: 100px;
-    width: 100vw;
+    max-width: 100vw;
     background-color: black;
     text-align: center;
     position: sticky;

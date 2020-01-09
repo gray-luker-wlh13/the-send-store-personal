@@ -6,7 +6,7 @@
 
     min-height: 100vh;
     height: auto;
-    width: 100vw;
+    max-width: 100vw;
     padding: 120px 0px;
     background-color: $backgroundColor;
 
@@ -102,14 +102,14 @@
     border: 1px solid $borderColor;
     border-radius: 10px;
 
-    button {
-        height: 30px;
-        width: 90px;
-        border: 1px $borderColor solid;
-        border-radius: 5px;
-        font-weight: bold;
-        box-shadow: 2px 3px rgb(80, 80, 80);
-        margin: 10px;
+    #read {
+        border: none;
+        font-size: 18px;
+        margin-bottom: 5px;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
 
@@ -143,8 +143,19 @@
         width: 280px;
         height: 50px;
         margin-top: 15px;
+
+        button {
+            height: 30px;
+            width: 90px;
+            border: 1px $borderColor solid;
+            border-radius: 5px;
+            font-weight: bold;
+            box-shadow: 2px 3px rgb(80, 80, 80);
+            margin: 10px;
+        }
     }
 }
+
 
 .my-product-info {
     @include productFlex();

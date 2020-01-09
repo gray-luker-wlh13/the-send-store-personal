@@ -18,6 +18,8 @@ const Profile = (props) => {
     const [editProfile, setEditProfile] = useState(false);
     const [profileImg, setProfileImg] = useState('');
     const [favoriteClimb, setFavClimb] = useState('');
+    const [desClicked, setDesClicked] = useState(false);
+    const [viewDescrip, setViewDescrip] = useState(0);
 
     // this.state = {myProducts: []}
 
@@ -77,6 +79,11 @@ const Profile = (props) => {
     let saveChange = () => {
         updateProfile(consumer.consumer_id, {profileImg, favoriteClimb})
         cancelEdit()
+    }
+
+    let seeMore = (product_id) => {
+        setDesClicked(!desClicked)
+        setViewDescrip(product_id)
     }
 
 
@@ -141,9 +148,15 @@ const Profile = (props) => {
                         <label className='my-product-labels'>Condition:</label>{product.condition}
                     </div>
                     <label className='my-product-labels'>Description:</label>
-                    <div id='my-product-description'>
-                            {product.product_description}
-                    </div>
+                    {desClicked && viewDescrip === product.product_id ? ( <>
+                            <div id='product-description'>
+                                {product.product_description}
+                            </div>
+                            <button id='read' onClick={() => seeMore(product.product_id)}>Read Less -</button>
+                        </>
+                    ) : (
+                        <button id='read' onClick={() => seeMore(product.product_id)}>Read More +</button>
+                    )}
                     <div className='buttons-container'>
                         <button onClick={() => select(product)}>Edit</button>
                         <button onClick={() => deleteProduct(product.product_id)}>Delete</button>

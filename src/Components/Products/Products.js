@@ -6,11 +6,12 @@ import {getProducts} from '../../redux/reducers/getProductsReducer';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import {Link} from 'react-router-dom';
-import Fade from 'react-reveal/Fade';
+import Slide from 'react-reveal/Slide';
 
 
 const Products = (props) => {
-    
+    const [desClicked, setDesClicked] = useState(false);
+    const [viewDescrip, setViewDescrip] = useState(0);
 
     const {username, consumer_order_id} = props.consumer.consumer;
     const MySwal = withReactContent(Swal);
@@ -46,6 +47,11 @@ const Products = (props) => {
             })
         }                                 
     }     
+
+    let seeMore = (product_id) => {
+        setDesClicked(!desClicked)
+        setViewDescrip(product_id)
+    }
     
     // console.log(props.products.products)
     const {products} = props.products;
@@ -65,9 +71,15 @@ const Products = (props) => {
                         <label className='product-labels'>Condition:</label>{e.condition}
                     </div>
                     <label className='product-labels'>Description:</label>
-                    <div id='product-description'>
-                            {e.product_description}
-                    </div>
+                    {desClicked && viewDescrip === e.product_id ? ( <>
+                            <div id='product-description'>
+                                {e.product_description}
+                            </div>
+                            <button onClick={() => seeMore(e.product_id)}>Read Less -</button>
+                        </>
+                    ) : (
+                        <button onClick={() => seeMore(e.product_id)}>Read More +</button>
+                    )}
                 </div>
                 <div id='add-button-container'>
                     <button id='add-to-cart'

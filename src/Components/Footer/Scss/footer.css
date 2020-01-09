@@ -1,0 +1,33 @@
+#footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 75px;
+  max-width: 100vw;
+  background-color: black;
+  padding: 0 10px;
+}
+
+#footer div {
+  color: white;
+  font-size: 20px;
+}
+
+#footer div a {
+  color: white;
+  outline: none;
+  text-decoration: none;
+}
+
+#footer div a:hover {
+  text-decoration: underline;
+}
+/*# sourceMappingURL=footer.css.map */

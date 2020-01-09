@@ -8,21 +8,22 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   height: 550px;
   position: -webkit-sticky;
   position: sticky;
   left: 0px;
-  top: 220px;
+  top: 170px;
+  margin-top: 50px;
 }
 
 .post-container .new-product {
-  height: 550px;
+  height: 650px;
   width: 400px;
   border: 1px solid rgba(105, 105, 105, 0.747);
   background-color: white;
@@ -72,6 +73,57 @@
   width: 150px;
 }
 
+.post-container .product-input p {
+  border: 1px dotted rgba(105, 105, 105, 0.747);
+  height: 40px;
+  width: 150px;
+  padding: 5px 0 0 0;
+  border-radius: 5px;
+}
+
+.post-container .product-input-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 10px;
+  width: 400px;
+}
+
+.post-container .product-input-img label {
+  color: black;
+  font-size: 20px;
+}
+
+.post-container .product-input-img input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border-style: none;
+  border: 1px solid rgba(105, 105, 105, 0.747);
+  height: 20px;
+  width: 150px;
+}
+
+.post-container .product-input-img p {
+  border: 3px dotted rgba(105, 105, 105, 0.747);
+  height: 40px;
+  width: 150px;
+  padding: 5px 0 0 0;
+  border-radius: 5px;
+}
+
 .post-container .custom-select select {
   width: 150px;
   height: 25px;
@@ -103,6 +155,7 @@
   font-weight: bold;
   -webkit-box-shadow: 2px 3px #505050;
           box-shadow: 2px 3px #505050;
+  margin: 10px;
 }
 
 .post-container #description {
