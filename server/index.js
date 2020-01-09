@@ -34,7 +34,7 @@ app.post('/api/auth/logout', authCtrl.logout);
 //home endpoints
 app.get('/api/products', homeCtrl.getProducts);
 app.post('/api/cart', homeCtrl.addToCart);
-app.get('/api/profile/:id', homeCtrl.getProfile);
+app.get('/api/otherprofile/:id', homeCtrl.getProfile);
 
 //cart endpoints
 app.get('/api/cart/:id', cartCtrl.getCart);

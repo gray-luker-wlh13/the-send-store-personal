@@ -5,8 +5,7 @@ import {connect} from 'react-redux';
 import {getProducts} from '../../redux/reducers/getProductsReducer';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import {Link} from 'react-router-dom';
-import Slide from 'react-reveal/Slide';
+import {withRouter} from 'react-router-dom';
 
 
 const Products = (props) => {
@@ -23,12 +22,6 @@ const Products = (props) => {
     let getProducts = () => {
         axios.get('/api/products').then(res => {
             props.getProducts(res.data)
-        })
-    }
-
-    let getProfile = (id) => {
-        axios.get(`/api/profile/${id}`).then(res => {
-            
         })
     }
 
@@ -52,10 +45,12 @@ const Products = (props) => {
         setDesClicked(!desClicked)
         setViewDescrip(product_id)
     }
+
+    let seeProfile = (id) => props.history.push(`/otherprofile/${id}`);
     
     // console.log(props.products.products)
     const {products} = props.products;
-    console.log(products);
+    console.log(props);
     let allProducts = products.sort((a, b) => a.product_id - b.product_id).map((e, i) => {
         return (
             <div className='products' key={i}>
@@ -63,7 +58,7 @@ const Products = (props) => {
                 <div className='product-info'>
                     <div className='user-id'>
                         <img src={e.profile_img}/>
-                        <h3 onClick={() => getProfile(e.consumer_id)}>{e.username}</h3>
+                        <h3 onClick={() => seeProfile(e.consumer_id)}>{e.username}</h3>
                     </div>
                     <h3>{e.product_title}</h3>
                     <h4>${e.price}</h4>
@@ -93,9 +88,7 @@ const Products = (props) => {
 
     return (
         <div className='products-container'>
-            {/* <Fade right delay={100} duration={1000}> */}
-                {allProducts}
-            {/* </Fade> */}
+            {allProducts}
         </div>
     )
 }
@@ -107,4 +100,4 @@ const mapStateToProps = (reduxState) => {
     };
 }
 
-export default connect(mapStateToProps, {getProducts})(Products);
+export default withRouter(connect(mapStateToProps, {getProducts})(Products));

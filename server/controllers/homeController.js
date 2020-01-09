@@ -18,10 +18,12 @@ module.exports = {
     },
 
     getProfile: (req, res) => {
+        console.log(req.params)
         const {id} = req.params;
         const db = req.app.get('db');
-        db.consumers.get_profile(+id).then(profile => {
+        db.consumers.get_profile({id}).then(profile => {
             res.status(200).send(profile)
+            // console.log(profile)
         })
         .catch(err => res.status(500).send(err))
     }
