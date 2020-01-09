@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './Scss/profile.scss';
+import useToggle from '../../hooks/useToggle';
 import {connect} from 'react-redux';
 import {logout, getConsumer} from '../../redux/reducers/getConsumerReducer';
 import {withRouter} from 'react-router-dom';
@@ -15,11 +16,14 @@ const Profile = (props) => {
     const [editProduct, setEditProduct] = useState(false);
     const [newProduct, setNewProduct] = useState(false);
     const [editItem, setEditItem] = useState({});
-    const [editProfile, setEditProfile] = useState(false);
+    // const [editProfile, setEditProfile] = useState(false);
     const [profileImg, setProfileImg] = useState('');
     const [favoriteClimb, setFavClimb] = useState('');
     const [desClicked, setDesClicked] = useState(false);
     const [viewDescrip, setViewDescrip] = useState(0);
+
+    const [editProfile, toggleEditProfile] = useToggle(false);
+
 
     // this.state = {myProducts: []}
 
@@ -73,7 +77,7 @@ const Profile = (props) => {
     let cancelEdit = () => {
         setProfileImg('')
         setFavClimb('')
-        setEditProfile(false)
+        toggleEditProfile()
     }
 
     let saveChange = () => {
@@ -203,7 +207,7 @@ const Profile = (props) => {
                         </div>
                         <div className='buttons-container'>
                             <Link to='/'><button onClick={logout}>Log Out</button></Link>
-                            <button onClick={() => setEditProfile(!editProfile)}>Edit Profile</button>
+                            <button onClick={toggleEditProfile}>Edit Profile</button>
                         </div>
                     </div>
                 </Flip>
