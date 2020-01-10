@@ -50,7 +50,7 @@ const Products = (props) => {
     
     // console.log(props.products.products)
     const {products} = props.products;
-    console.log(props);
+    console.log(props.consumer.consumer);
     let allProducts = products.sort((a, b) => a.product_id - b.product_id).map((e, i) => {
         return (
             <div className='products' key={i}>

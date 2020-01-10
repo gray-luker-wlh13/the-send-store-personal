@@ -28,10 +28,6 @@ massive(CONNECTION_STRING).then(db => {
     console.log(gradient.mind('db connected'));
 });
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build/index.html'))
-});
-
 //auth endpoints
 app.post('/api/auth/login', authCtrl.login);
 app.post('/api/auth/register', authCtrl.register);

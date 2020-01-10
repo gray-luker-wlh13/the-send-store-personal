@@ -9,9 +9,9 @@ import {v4 as randomString} from 'uuid';
 import Dropzone from 'react-dropzone';
 
 const Auth = (props) => {
-    const [username, bindUserName] = useInput('');
-    const [password, bindPassword] = useInput('');
-    const [favorite_climb, bindFavoriteClimb] = useInput('');
+    const [username, bindUserName, resetUserName] = useInput('');
+    const [password, bindPassword, resetPassword] = useInput('');
+    const [favorite_climb, bindFavoriteClimb, resetFavoriteClimb] = useInput('');
     const [profile_img, setProfileImg] = useState('');
     const [clicked, setClick] = useState(false);
 
@@ -21,6 +21,8 @@ const Auth = (props) => {
             props.getConsumer(res.data)
             props.history.push('/home')
             // console.log(res.data)
+            resetUserName()
+            resetPassword()
         })
     }
 
@@ -33,6 +35,10 @@ const Auth = (props) => {
         }).then(res => {
             props.getConsumer(res.data)
             props.history.push('/home')
+            resetUserName()
+            resetPassword()
+            resetFavoriteClimb()
+            setProfileImg('')
         })
     }
 

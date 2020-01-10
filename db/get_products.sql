@@ -1,2 +1,2 @@
-SELECT * FROM products p
+SELECT p.product_img, p.product_title, p.price, p.condition, p.product_description, c.username, c.profile_img, c.consumer_id, p.product_id FROM products p
 JOIN consumer c ON p.consumer_id = c.consumer_id;
