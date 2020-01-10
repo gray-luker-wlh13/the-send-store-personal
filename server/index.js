@@ -10,6 +10,7 @@ const express = require('express'),
       cartCtrl = require('./controllers/cartController'),
       awsCtrl = require('./controllers/awsController'),
       profileCtrl = require('./controllers/profileController'),
+      path = require('path'),
       app = express();
 
 app.use(express.json());
@@ -24,6 +25,10 @@ app.use(session({
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
     console.log(gradient.mind('db connected'));
+});
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'))
 });
 
 //auth endpoints
