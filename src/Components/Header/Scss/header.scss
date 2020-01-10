@@ -18,6 +18,14 @@
     #search-img {
         display: none;
     }
+
+    #cart-img {
+        display: none;
+    }
+
+    #profile-img {
+        display: none;
+    }
 }
 
 #search-button {
@@ -65,5 +73,100 @@
 
     img{
         border: none;
+    }
+}
+
+@media (max-width: 650px){
+    .header {
+        @include flexDisplay();
+    
+        height: 80px;
+        max-width: 100vw;
+        background-color: black;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+
+        .left-links {
+            @include flexDisplay();
+            @include size();
+        
+            text-decoration: none;
+
+            #search-button {
+                display: none;
+            }
+        
+            .header-link {
+                display: none;
+            }
+        
+            #home-img {
+                display: block;
+                height: 35px;
+                
+                i {
+                    height: 35px;
+                    color: white;
+                    font-size: 2.0rem;
+                }
+            }
+        
+            #search-img {
+                display: block;
+                height: 35px;
+                // margin: none;
+                
+                i {
+                    height: 35px;
+                    color: white;
+                    font-size: 2.0rem;
+                }
+            }
+        }
+
+        #header-logo {
+            height: 80px;
+            margin-top: -40px;
+        
+            img{
+                border: none;
+                height: 200px;
+            }
+        }
+
+        .right-links {
+            @include flexDisplay();
+            @include size();
+        
+            text-decoration: none;
+
+            .header-link {
+                display: none;
+            }
+
+            #cart-img {
+                display: block;
+                height: 35px;
+
+                i {
+                    height: 35px;
+                    color: white;
+                    font-size: 2.0rem;
+                }
+            }
+
+            #profile-img {
+                display: block;
+                height: 35px;
+
+                i {
+                    height: 35px;
+                    color: white;
+                    font-size: 2.0rem;
+                }
+            }
+        }
     }
 }

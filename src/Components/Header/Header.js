@@ -2,8 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './Scss/header.scss';
 import headerLogo from '../../img/headerLogo.png';
-import home_logo from '../../img/home_logo.png';
-import searchLogo from '../../img/searchLogo.png'
 import {connect} from 'react-redux';
 import {toggleSearch} from '../../redux/reducers/searchReducer';
 
@@ -15,9 +13,9 @@ const Header = (props) => {
                 <button id='search-button' onClick={props.toggleSearch}>
                     Search
                 </button>
-                <Link to='/home' id='home-img'><img src={home_logo} alt='home-img'/></Link>
+                <Link to='/home' id='home-img'><i class="fas fa-home"></i></Link>
                 <button id='search-img' onClick={props.toggleSearch}>
-                    <img src={searchLogo} alt='search-img'/>
+                    <i class="fas fa-search"></i>
                 </button>
             </div>
             <div id='header-logo'>
@@ -26,6 +24,8 @@ const Header = (props) => {
             <div className='right-links'>
             <Link to='/cart' className='header-link'>Cart</Link>
             <Link to='/profile' className='header-link'>Profile</Link>
+            <Link to='/cart' id='cart-img'><i class="fas fa-shopping-cart"></i></Link>
+            <Link to='/profile' id='profile-img'><i class="fas fa-user"></i></Link>
             </div>
         </div>
     )

@@ -32,6 +32,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  min-height: 110vh;
   height: auto;
   width: 100vw;
   background-color: #252525;
@@ -172,6 +173,9 @@ label {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   height: 100px;
 }
 
@@ -189,6 +193,7 @@ label {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-top: 5px;
 }
 
 .buttons #other-button {
@@ -272,7 +277,12 @@ label {
   text-decoration: underline;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 550px) {
+  img {
+    height: 210px;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
   .login-container {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -328,6 +338,26 @@ label {
     border: 1px white solid;
     border-radius: 15px;
   }
+  .register-container #profile-display {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 150px;
+    width: 150px;
+    margin: 15px 0px;
+    border-radius: 100px;
+    overflow: hidden;
+  }
   .register-container label {
     color: white;
     margin-right: 10px;
@@ -344,10 +374,116 @@ label {
     color: white;
     border: 1px dotted white;
     height: 40px;
-    width: 300px;
+    width: 230px;
     font-size: 18px;
     text-align: center;
-    padding: 10px 5px 0 5px;
+    padding: 10px 5px;
+  }
+  .register-container .auth-p {
+    color: white;
+    margin-right: 10px;
+    font-size: 20px;
+    border: none;
+  }
+  .register-container #other-register-button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    width: 290px;
+  }
+}
+
+@media (max-width: 420px) {
+  img {
+    height: 200px;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  .login-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 370px;
+    width: 300px;
+    border: 1px white solid;
+    border-radius: 15px;
+  }
+  .login-container label {
+    color: white;
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  .login-container input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border-style: none;
+    height: 20px;
+    width: 120px;
+  }
+  .login-container .auth-p {
+    color: white;
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  .register-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 640px;
+    width: 318px;
+    border: 1px white solid;
+    border-radius: 15px;
+  }
+  .register-container label {
+    color: white;
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  .register-container input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border-style: none;
+    height: 25px;
+    width: 150px;
+  }
+  .register-container p {
+    color: white;
+    border: 1px dotted white;
+    height: 40px;
+    width: 230px;
+    font-size: 18px;
+    text-align: center;
+    padding: 10px 5px;
   }
   .register-container .auth-p {
     color: white;

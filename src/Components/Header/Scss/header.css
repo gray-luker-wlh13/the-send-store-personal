@@ -25,6 +25,14 @@
   display: none;
 }
 
+.header #cart-img {
+  display: none;
+}
+
+.header #profile-img {
+  display: none;
+}
+
 #search-button {
   font-weight: bold;
   font-size: 20px;
@@ -87,5 +95,107 @@
 
 #header-logo img {
   border: none;
+}
+
+@media (max-width: 650px) {
+  .header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 80px;
+    max-width: 100vw;
+    background-color: black;
+    text-align: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .header .left-links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+    text-decoration: none;
+  }
+  .header .left-links #search-button {
+    display: none;
+  }
+  .header .left-links .header-link {
+    display: none;
+  }
+  .header .left-links #home-img {
+    display: block;
+    height: 35px;
+  }
+  .header .left-links #home-img i {
+    height: 35px;
+    color: white;
+    font-size: 2.0rem;
+  }
+  .header .left-links #search-img {
+    display: block;
+    height: 35px;
+  }
+  .header .left-links #search-img i {
+    height: 35px;
+    color: white;
+    font-size: 2.0rem;
+  }
+  .header #header-logo {
+    height: 80px;
+    margin-top: -40px;
+  }
+  .header #header-logo img {
+    border: none;
+    height: 200px;
+  }
+  .header .right-links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+    text-decoration: none;
+  }
+  .header .right-links .header-link {
+    display: none;
+  }
+  .header .right-links #cart-img {
+    display: block;
+    height: 35px;
+  }
+  .header .right-links #cart-img i {
+    height: 35px;
+    color: white;
+    font-size: 2.0rem;
+  }
+  .header .right-links #profile-img {
+    display: block;
+    height: 35px;
+  }
+  .header .right-links #profile-img i {
+    height: 35px;
+    color: white;
+    font-size: 2.0rem;
+  }
 }
 /*# sourceMappingURL=header.css.map */

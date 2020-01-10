@@ -148,6 +148,17 @@
   cursor: pointer;
 }
 
+.consumer-products-container #create {
+  height: 30px;
+  width: 120px;
+  border: 1px rgba(105, 105, 105, 0.747) solid;
+  border-radius: 5px;
+  font-weight: bold;
+  -webkit-box-shadow: 2px 3px #505050;
+          box-shadow: 2px 3px #505050;
+  margin: 10px;
+}
+
 .consumer-products {
   display: -webkit-box;
   display: -ms-flexbox;
