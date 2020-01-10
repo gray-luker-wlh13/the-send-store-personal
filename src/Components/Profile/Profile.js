@@ -227,7 +227,7 @@ const Profile = (props) => {
                                 </div>
                             )}
                     </div>
-                    <button onClick={() => setNewProduct(!newProduct)}>Create New Product</button>
+                    <button id='create' onClick={() => setNewProduct(!newProduct)}>Create New Product</button>
                 </div>
             </Flip>
             ) : (
