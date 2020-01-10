@@ -44,5 +44,14 @@ module.exports = {
     logout: (req, res) => {
         req.session.destroy();
         res.sendStatus(200);
+    },
+
+    checkSession: (req, res) => {
+        if(req.session.consumer){
+            res.status(200).send(req.session.consumer)
+        } else {
+            res.status(500).send({message: 'Please log in'})
+        }
     }
+
 };
