@@ -17,6 +17,14 @@
   z-index: 1;
 }
 
+.header #home-img {
+  display: none;
+}
+
+.header #search-img {
+  display: none;
+}
+
 #search-button {
   font-weight: bold;
   font-size: 20px;

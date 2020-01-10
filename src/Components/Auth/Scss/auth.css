@@ -51,7 +51,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 120vh;
+  min-height: 120vh;
+  height: auto;
   width: 100vw;
   background-color: #252525;
 }
@@ -269,5 +270,106 @@ label {
   color: white;
   font-size: 20px;
   text-decoration: underline;
+}
+
+@media (max-width: 450px) {
+  .login-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 400px;
+    width: 340px;
+    border: 1px white solid;
+    border-radius: 15px;
+  }
+  .login-container label {
+    color: white;
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  .login-container input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border-style: none;
+    height: 20px;
+    width: 120px;
+  }
+  .login-container .auth-p {
+    color: white;
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  .register-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 670px;
+    width: 340px;
+    border: 1px white solid;
+    border-radius: 15px;
+  }
+  .register-container label {
+    color: white;
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  .register-container input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border-style: none;
+    height: 25px;
+    width: 150px;
+  }
+  .register-container p {
+    color: white;
+    border: 1px dotted white;
+    height: 40px;
+    width: 300px;
+    font-size: 18px;
+    text-align: center;
+    padding: 10px 5px 0 5px;
+  }
+  .register-container .auth-p {
+    color: white;
+    margin-right: 10px;
+    font-size: 20px;
+    border: none;
+  }
+  .register-container #other-register-button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    width: 290px;
+  }
 }
 /*# sourceMappingURL=auth.css.map */

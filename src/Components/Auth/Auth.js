@@ -9,15 +9,10 @@ import {v4 as randomString} from 'uuid';
 import Dropzone from 'react-dropzone';
 
 const Auth = (props) => {
-    // const [username, setUsername] = useState('');
-    // const [password, setPassword] = useState('');
-
     const [username, bindUserName] = useInput('');
     const [password, bindPassword] = useInput('');
     const [favorite_climb, bindFavoriteClimb] = useInput('');
-
     const [profile_img, setProfileImg] = useState('');
-    // const [favorite_climb, setClimb] = useState('');
     const [clicked, setClick] = useState(false);
 
 
