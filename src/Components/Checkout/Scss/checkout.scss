@@ -1,7 +1,7 @@
 @import '../../Variables/variables.scss';
 
 .purchase-container {
-    min-height: 100vh;
+    // min-height: 100vh;
     height: 400px;
     width: 400px;
     background: white;
@@ -25,4 +25,64 @@
         text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px;
         border-radius: 4px;
     }
+}
+
+@media (max-width: 800px){
+    .purchase-container {
+        // min-height: 100vh;
+        height: 250px;
+        width: 250px;
+        background: white;
+        position: sticky;
+        right: 0px;
+        top: 130px;
+        margin: 90px 0px;
+        border: 1px $borderColor solid;
+        border-radius: 10px;
+    
+        button {
+            background-image: linear-gradient(rgb(125, 197, 238), rgb(0, 140, 221) 85%, rgb(48, 162, 228));
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            padding: 0px 12px;
+            height: 30px;
+            line-height: 30px;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+            text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px;
+            border-radius: 4px;
+        }
+    }
+    
+}
+
+@media (max-width: 565px){
+    .purchase-container {
+        // min-height: 100vh;
+        height: 250px;
+        width: 251px;
+        background: white;
+        // position: sticky;
+        // right: 0px;
+        // top: 130px;
+        margin: 90px 0px;
+        border: 1px $borderColor solid;
+        border-radius: 10px;
+    
+        button {
+            background-image: linear-gradient(rgb(125, 197, 238), rgb(0, 140, 221) 85%, rgb(48, 162, 228));
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            padding: 0px 12px;
+            height: 30px;
+            line-height: 30px;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+            text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px;
+            border-radius: 4px;
+        }
+    }
+    
 }

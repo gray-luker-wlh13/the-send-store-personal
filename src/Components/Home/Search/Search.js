@@ -91,8 +91,9 @@ const Search = (props) => {
 
     return (
         <div className='search-container'>
-            <Slide top duration={1000}>
-                <div className='search'>
+                {allProducts[0] ? (
+                    <>
+                    <div className='search'>
                     <input 
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
@@ -101,8 +102,26 @@ const Search = (props) => {
                     />
                     <button onClick={props.cancelToggle}>X</button>
                 </div>
-                {allProducts}
-            </Slide>
+                <div className='products-container'>
+                    {allProducts}
+                </div>
+                </>
+                ) : (
+                    <>
+                    <div className='search'>
+                    <input 
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        type='text'
+                        placeholder='Search for anything...'
+                    />
+                    <button onClick={props.cancelToggle}>X</button>
+                    </div>
+                    <div className='empty-cart'>
+                        <h2>Sorry but your search doesn't match any of our products.</h2>
+                    </div>
+                    </>
+                )}
         </div>
     )
 }

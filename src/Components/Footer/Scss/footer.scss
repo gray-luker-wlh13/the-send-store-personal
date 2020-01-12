@@ -24,3 +24,57 @@
         }
     }
 }
+
+@media (max-width: 580px) {
+    #footer {
+        @include flexDisplay();
+        justify-content: space-between;
+    
+        height: 50px;
+        max-width: 100vw;
+        background-color: black;
+        padding: 0 5px;
+        
+        div {
+            color: white;
+            font-size: 15px;
+    
+            a {
+                color: white;
+                outline: none;
+                text-decoration: none;
+    
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 440px) {
+    #footer {
+        @include flexDisplay();
+        justify-content: space-between;
+    
+        height: 50px;
+        max-width: 100vw;
+        background-color: black;
+        padding: 0 5px;
+        
+        div {
+            color: white;
+            font-size: 10px;
+    
+            a {
+                color: white;
+                outline: none;
+                text-decoration: none;
+    
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

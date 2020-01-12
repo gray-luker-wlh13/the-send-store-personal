@@ -1,5 +1,4 @@
 .purchase-container {
-  min-height: 100vh;
   height: 400px;
   width: 400px;
   background: white;
@@ -26,5 +25,61 @@
           box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
   text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px;
   border-radius: 4px;
+}
+
+@media (max-width: 800px) {
+  .purchase-container {
+    height: 250px;
+    width: 250px;
+    background: white;
+    position: -webkit-sticky;
+    position: sticky;
+    right: 0px;
+    top: 130px;
+    margin: 90px 0px;
+    border: 1px rgba(105, 105, 105, 0.747) solid;
+    border-radius: 10px;
+  }
+  .purchase-container button {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#7dc5ee), color-stop(85%, #008cdd), to(#30a2e4));
+    background-image: linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    padding: 0px 12px;
+    height: 30px;
+    line-height: 30px;
+    color: white;
+    font-weight: bold;
+    -webkit-box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+            box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+    text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px;
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 565px) {
+  .purchase-container {
+    height: 250px;
+    width: 251px;
+    background: white;
+    margin: 90px 0px;
+    border: 1px rgba(105, 105, 105, 0.747) solid;
+    border-radius: 10px;
+  }
+  .purchase-container button {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#7dc5ee), color-stop(85%, #008cdd), to(#30a2e4));
+    background-image: linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    padding: 0px 12px;
+    height: 30px;
+    line-height: 30px;
+    color: white;
+    font-weight: bold;
+    -webkit-box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+            box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+    text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px;
+    border-radius: 4px;
+  }
 }
 /*# sourceMappingURL=checkout.css.map */
