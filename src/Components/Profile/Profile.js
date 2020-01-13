@@ -198,8 +198,8 @@ const Profile = (props) => {
                 </Flip>
                 </>
             ) : (
-                <Flip left delay={100} duration={1000}>
-                    <div className='profile'>
+                // <Flip left delay={100} duration={1000}>
+                    <div className='profile-other'>
                         <img src={consumer.profile_img} alt='profile-img'/>
                         <h3>{consumer.username}</h3>
                         <div className='favorite-climb'>
@@ -210,7 +210,7 @@ const Profile = (props) => {
                             <button onClick={toggleEditProfile}>Edit Profile</button>
                         </div>
                     </div>
-                </Flip>
+                // </Flip>
             )}
            
            {!editProfile ? (

@@ -90,7 +90,7 @@ const OtherProfile = (props) => {
 
     let mappedUser = user.map((users, i) => {
         return (
-            <div className='profile' key={i}>
+            <div className='profile-other' key={i}>
                 <img src={users.profile_img} alt='profile-img'/>
                 <h3>{users.username}</h3>
                 <div className='favorite-climb'>
