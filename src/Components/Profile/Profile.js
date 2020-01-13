@@ -233,7 +233,7 @@ const Profile = (props) => {
             ) : (
                 <>
                 <Flip left delay={100} duration={1000}>
-                    <div className='profile'>
+                    <div className='profile-other'>
                         <img src={profileImg} alt='profile-img'/>
                         <label>Profile Img:</label>
                         <Dropzone
