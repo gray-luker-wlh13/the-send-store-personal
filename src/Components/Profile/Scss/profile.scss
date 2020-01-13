@@ -16,7 +16,7 @@
     }
 }
 
-.profile {
+.profile-other {
     @include flexDisplayAuth(column);
     align-items: center;
 
@@ -248,7 +248,7 @@
         }
     }
     
-    .profile {
+    .profile-other {
         @include flexDisplayAuth(column);
         align-items: center;
     
@@ -481,7 +481,7 @@
         }
     }
     
-    .profile {
+    .profile-other {
         @include flexDisplayAuth(column);
         align-items: center;
     
@@ -715,7 +715,7 @@
         }
     }
     
-    .profile {
+    .profile-other {
         @include flexDisplayAuth(column);
         // align-items: center;
     
