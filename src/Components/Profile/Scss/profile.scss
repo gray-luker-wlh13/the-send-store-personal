@@ -20,7 +20,7 @@
     @include flexDisplayAuth(column);
     align-items: center;
 
-    height: 550px;
+    height: 570px;
     width: 400px;
     border: 1px solid $borderColor;
     background-color: white;
@@ -35,10 +35,12 @@
     img {
         // @include flexDisplayTwo(row);
         
-        height: 200px;
-        width: 200px;
+        height: 180px;
+        width: 180px;
         margin: 15px 0px;
-        border-radius: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: top;
         overflow: hidden;
         border: 1px solid $borderColor;
         padding: 5px;

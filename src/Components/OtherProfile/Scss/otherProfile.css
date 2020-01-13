@@ -21,7 +21,7 @@
           text-decoration-color: black;
 }
 
-.profile {
+.profile-other {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -48,7 +48,7 @@
   margin-right: 20px;
 }
 
-.profile #go-back {
+.profile-other #go-back {
   height: 30px;
   width: 90px;
   border: 1px rgba(105, 105, 105, 0.747) solid;
@@ -59,11 +59,11 @@
   margin: 10px;
 }
 
-.profile h3 {
+.profile-other h3 {
   color: black;
 }
 
-.profile img {
+.profile-other img {
   height: 200px;
   width: 200px;
   margin: 15px 0px;
@@ -73,7 +73,7 @@
   padding: 5px;
 }
 
-.profile p {
+.profile-other p {
   border: 1px dotted rgba(105, 105, 105, 0.747);
   height: 40px;
   width: 150px;
@@ -81,7 +81,7 @@
   border-radius: 5px;
 }
 
-.profile .favorite-climb {
+.profile-other .favorite-climb {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -95,13 +95,13 @@
   margin-bottom: 40px;
 }
 
-.profile .favorite-climb label {
+.profile-other .favorite-climb label {
   color: black;
   font-weight: bold;
   font-size: 18px;
 }
 
-.profile .favorite-climb div {
+.profile-other .favorite-climb div {
   height: 100px;
   border: 1px rgba(105, 105, 105, 0.747) solid;
   margin: 5px 10px 0px 0px;
@@ -110,7 +110,7 @@
   padding: 20px;
 }
 
-.profile .buttons-container {
+.profile-other .buttons-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -131,7 +131,7 @@
   height: 100px;
 }
 
-.profile .buttons-container button {
+.profile-other .buttons-container button {
   height: 30px;
   width: 90px;
   border: 1px rgba(105, 105, 105, 0.747) solid;

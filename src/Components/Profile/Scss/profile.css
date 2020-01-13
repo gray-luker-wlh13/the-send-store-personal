@@ -36,7 +36,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   align-items: center;
-  height: 550px;
+  height: 570px;
   width: 400px;
   border: 1px solid rgba(105, 105, 105, 0.747);
   background-color: white;
@@ -49,10 +49,14 @@
 }
 
 .profile-other img {
-  height: 200px;
-  width: 200px;
+  height: 180px;
+  width: 180px;
   margin: 15px 0px;
-  border-radius: 100px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
   overflow: hidden;
   border: 1px solid rgba(105, 105, 105, 0.747);
   padding: 5px;
