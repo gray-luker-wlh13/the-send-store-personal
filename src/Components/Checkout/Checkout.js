@@ -39,7 +39,7 @@ const Checkout = (props) => {
                 icon: 'success',
                 title: 'Congrats...',
                 text: 'Item has been purchased!',
-                footer: 'Your reciept is in you email.'
+                footer: 'Your reciept is in your email.'
             })
             setTotal(0)
             props.history.push('/home')
